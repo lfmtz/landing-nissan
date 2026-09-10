@@ -1,0 +1,97 @@
+{
+  "sedanes": {
+    "welcome": "¡Hola! Bienvenido a la línea de Sedanes Nissan. 🚗 Contamos con autos reconocidos por su confiabilidad, rendimiento de combustible y tecnología Nissan Intelligent Mobility. ¿Qué buscas principalmente?",
+    "options": [
+      {
+        "label": "🏙️ Ciudad y Ahorro (Versa)",
+        "filter": "versa",
+        "reply": "Excelente opción. El Nissan Versa es el sedán favorito por su gran rendimiento, cajuela espaciosa y 6 bolsas de aire de serie en todas sus versiones. Conoce nuestras promociones:"
+      },
+      {
+        "label": "✨ Estilo y Potencia (Sentra)",
+        "filter": "sentra",
+        "reply": "Gran elección. El Nissan Sentra destaca por su diseño atlético, motor 2.0L y acabados premium con asistencias de frenado inteligente:"
+      },
+      {
+        "label": "👑 Ejecutivo y Lujo (Altima)",
+        "filter": "altima",
+        "reply": "El sedán más sofisticado. Nissan Altima ofrece motor VC-Turbo revolucionario, tracción avanzada y asistencias ProPILOT Assist:"
+      }
+    ]
+  },
+  "suvs": {
+    "welcome": "¡Hola! Bienvenido al portal de SUVs Nissan. 🚙 Tenemos modelos diseñados para la aventura urbana y los viajes en familia. ¿Qué tipo de SUV se adapta a ti?",
+    "options": [
+      {
+        "label": "🌟 Urbana y Ágil (Kicks)",
+        "filter": "kicks",
+        "reply": "¡Nissan Kicks es perfecta para moverte por la ciudad con total libertad, sistema de audio Bose y visión 360°! Revisa las opciones:"
+      },
+      {
+        "label": "👨‍👩‍👧‍👦 Familiar 2 o 3 Filas (X-Trail)",
+        "filter": "xtrail",
+        "reply": "Espacio, comodidad y máxima seguridad. Nissan X-Trail te ofrece versiones con 2 o 3 filas de asientos y techo panorámico:"
+      },
+      {
+        "label": "⛰️ Lujo y Aventura V6 (Pathfinder)",
+        "filter": "pathfinder",
+        "reply": "Poder total para tu familia. Nissan Pathfinder cuenta con motor V6 de 270 hp, tracción 4WD inteligente y capacidad para 8 pasajeros:"
+      }
+    ]
+  },
+  "pickups": {
+    "welcome": "¡Hola! Bienvenido a la sección de Pickups y Comerciales Nissan. 🛻 La línea de pickups líder en México por su durabilidad y costo de mantenimiento. ¿Cuál es tu objetivo?",
+    "options": [
+      {
+        "label": "💼 Trabajo Rudo (NP300)",
+        "filter": "np300",
+        "reply": "La aliada perfecta para tu negocio. NP300 Chasis, Estacas y Pick-up están listas para cualquier carga con capacidades superiores a 1 tonelada:"
+      },
+      {
+        "label": "🧗 Aventura y Familia (Frontier)",
+        "filter": "frontier",
+        "reply": "Potencia y confort sin compromisos. Frontier Doble Cabina y PRO-4X combinan suspensión trasera multilink, tracción 4x4 y tecnología:"
+      }
+    ]
+  },
+  "epower": {
+    "welcome": "¡Bienvenido al futuro de la movilidad con Nissan e-POWER! ⚡ ¿Sabías que disfrutas de una conducción 100% eléctrica pero sin necesidad de conectarte a una toma de corriente?",
+    "options": [
+      {
+        "label": "⚡ ¿Cómo funciona e-POWER?",
+        "filter": "epower",
+        "reply": "Las ruedas son impulsadas 100% por un motor eléctrico. Cuenta con un motor a gasolina que solo genera energía eléctrica para la batería. Aceleración inmediata, silencio de marcha y autonomía de más de 900 km por tanque."
+      },
+      {
+        "label": "🚗 Kicks e-POWER",
+        "filter": "kicks-epower",
+        "reply": "Toda la agilidad de Nissan Kicks combinada con la aceleración instantánea y el modo e-Step para conducir con un solo pedal:"
+      },
+      {
+        "label": "🚙 X-Trail e-POWER",
+        "filter": "xtrail-epower",
+        "reply": "Potencia de tracción eléctrica integral e-4ORCE para control superior en lluvia o curvas, con el confort y espacio característico de X-Trail:"
+      }
+    ]
+  },
+  "demos": {
+    "welcome": "¡Hola! Estás en la sección de Unidades Demo y Seminuevos Garantizados Nissan. 🏷️ Autos con poco kilometraje, factura de agencia y condiciones comerciales excepcionales. ¿Qué buscas?",
+    "options": [
+      {
+        "label": "🚗 Sedanes Seminuevos",
+        "filter": "sedan",
+        "reply": "Revisa nuestras unidades Versa y Sentra demo con garantía y bonos de liquidación especial:"
+      },
+      {
+        "label": "🚙 SUVs Seminuevas",
+        "filter": "suv",
+        "reply": "Oportunidades únicas en Kicks y X-Trail demo con entrega inmediata:"
+      },
+      {
+        "label": "🛻 Pickups Seminuevas",
+        "filter": "pickup",
+        "reply": "Unidades Frontier de trabajo o uso particular inspeccionadas por nuestros técnicos certificados:"
+      }
+    ]
+  }
+}

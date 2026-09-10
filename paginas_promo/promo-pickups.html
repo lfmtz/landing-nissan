@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+   <!-- Google Tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XRDWZPQ4WT"></script>
+   <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-XRDWZPQ4WT');
+   </script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <title>Promociones PICKUPS</title>
+  <style>
+    :root {
+      --acento: #b45309;
+      --fondo-inv: #FFF6F2;
+      --borde-inv: #ffd9c7;
+      --gris-suave: #F4F4F4;
+      --gris-texto: #666666;
+      --texto-minimo: #999999;
+      --fuente: 'Barlow Condensed', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .grid-promos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      padding: 10px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 700px) {
+      .grid-promos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Estilos de la Tabla Excel Interactiva */
+    .excel-table-container {
+      max-width: 960px;
+      margin: 30px auto;
+      background: #fff;
+      border: 1px solid #E0E0E0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      padding: 20px;
+      font-family: var(--fuente);
+    }
+    .excel-table-container * {
+      font-family: var(--fuente);
+    }
+    .excel-table-container i, 
+    .excel-table-container i::before, 
+    .excel-table-container i::after {
+      font-family: 'Font Awesome 6 Free' !important;
+      font-weight: 900;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-8px);
+      }
+      60% {
+        transform: translateY(-4px);
+      }
+    }
+    .table-header-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .table-title {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #111;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .table-search-box {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+    }
+    .table-search-box i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+    }
+    .table-search-box input {
+      width: 100%;
+      padding: 8px 12px 8px 35px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border 0.3s;
+    }
+    .table-search-box input:focus {
+      border-color: var(--acento);
+    }
+    .table-responsive-scroll {
+      overflow-x: auto;
+      border-radius: 4px;
+      border: 1px solid #eee;
+    }
+    /* Estilos de Acordeones por Marca */
+    .brand-accordion {
+      background: #fdfdfd;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+    .brand-accordion:hover {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+    .brand-accordion-summary {
+      padding: 15px 20px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      background: #f9f9f9;
+      user-select: none;
+      outline: none;
+      transition: background 0.3s;
+    }
+    .brand-accordion-summary::-webkit-details-marker {
+      display: none;
+    }
+    .brand-accordion-summary:hover {
+      background: #f2f2f2;
+    }
+    .brand-accordion[open] .brand-accordion-summary {
+      background: #f1f1f1;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .brand-accordion-summary::after {
+      content: '078';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: #888;
+      transition: transform 0.3s ease;
+    }
+    .brand-accordion[open] .brand-accordion-summary::after {
+      transform: rotate(180deg);
+    }
+    .brand-name-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-units-badge {
+      background: #e1f5fe;
+      color: #0288d1;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .brand-accordion-content {
+      padding: 15px;
+      background: #fff;
+    }
+
+    .demo-excel-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .demo-excel-table th {
+      background: #f4f4f4;
+      color: #111;
+      font-weight: 700;
+      padding: 12px;
+      border-bottom: 2px solid #E0E0E0;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+    .demo-excel-table td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      color: #444;
+    }
+    .demo-excel-table tr:hover {
+      background: #fafafa;
+    }
+    .btn-wa-table {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-block;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .demo-excel-table, 
+      .demo-excel-table thead, 
+      .demo-excel-table tbody, 
+      .demo-excel-table th, 
+      .demo-excel-table td, 
+      .demo-excel-table tr {
+        display: block;
+      }
+      .demo-excel-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      .demo-excel-table tr {
+        border: 1px solid #E0E0E0;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      }
+      .demo-excel-table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 45% !important;
+        text-align: right;
+        min-height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .demo-excel-table td:last-child {
+        border-bottom: 0;
+        justify-content: center;
+        padding-left: 12px !important;
+        margin-top: 10px;
+      }
+      .demo-excel-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 12px;
+        font-weight: 700;
+        text-align: left;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color: #888;
+      }
+      .btn-wa-table {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #E0E0E0;
+      border-top: 5px solid var(--acento);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .img-container {
+      width: 100%;
+      padding-top: 75%;
+      position: relative;
+      background: #f5f5f5;
+    }
+
+    .card-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f5f5f5;
+    }
+
+    /* Carousel / Gallery Slider Styles */
+    .carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .carousel-track-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .carousel-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .card-img-carousel {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .carousel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.3s;
+    }
+    .carousel-control:hover {
+      background: rgba(0,0,0,0.8);
+    }
+    .carousel-control.prev {
+      left: 10px;
+    }
+    .carousel-control.next {
+      right: 10px;
+    }
+    .carousel-indicators {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+    }
+    .carousel-indicators .indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .carousel-indicators .indicator.active {
+      background: #fff;
+      box-shadow: 0 0 4px rgba(0,0,0,0.5);
+    }
+
+    .card-header {
+      padding: 12px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      gap: 8px;
+    }
+
+    .model-name {
+      font-family: var(--fuente);
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0;
+      color: #111;
+    }
+
+    .model-price {
+      font-family: var(--fuente);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .btn-wa {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--fuente);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .promo-body {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+
+    .promo-main {
+      font-family: var(--fuente);
+      line-height: 1.4;
+      background: var(--gris-suave);
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .benefits-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px 0;
+      font-family: var(--fuente);
+    }
+
+    .benefits-list li {
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      color: var(--gris-texto);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .benefits-list li::before {
+      content: "✓";
+      color: var(--acento-list, var(--acento));
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .legal {
+      font-size: 0.72rem;
+      color: var(--texto-minimo);
+      margin-top: auto;
+      padding-top: 10px;
+      font-family: var(--fuente);
+      line-height: 1.4;
+    }
+
+    /* Card Details Accordion Styles */
+    .card-details-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+    .card-details-accordion summary:hover {
+      background: #f1f3f5 !important;
+    }
+    .card-details-accordion[open] summary .accordion-arrow {
+      transform: rotate(180deg);
+    }
+    .card-details-accordion[open] summary {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      background: #f1f3f5;
+    }
+
+    .embed-footer {
+      height: 12px;
+    }
+
+    /* Estilos y Animaciones de Promo del Mes / Oportunidad Destacada */
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.35);
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes promoShimmer {
+      0% {
+        transform: translateX(-120%) rotate(25deg);
+      }
+      100% {
+        transform: translateX(250%) rotate(25deg);
+      }
+    }
+
+    .promo-banner-shimmer {
+      position: absolute;
+      top: -60%;
+      left: -60%;
+      width: 220%;
+      height: 220%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.18) 50%,
+        transparent 100%
+      );
+      pointer-events: none;
+      animation: promoShimmer 3.8s infinite linear;
+    }
+
+    .card-promo-sticker {
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-promo-sticker {
+      transform: scale(1.05);
+    }
+
+    .no-promos {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px;
+      font-family: var(--fuente);
+      font-size: 1.2rem;
+      color: var(--gris-texto);
+      background: #fafafa;
+      border: 1px dashed #ccc;
+      border-radius: 8px;
+    }
+
+    /* Estilos de la Barra de Navegación */
+    .brand-navbar {
+      background: rgba(15, 20, 30, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      font-family: var(--fuente);
+    }
+    .brand-nav-container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+    }
+    .brand-logo {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .brand-logo .accent-text {
+      color: #00e5ff;
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 5px;
+    }
+    .nav-toggle .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-item-link {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-item-link:hover, .nav-item-link.active {
+      color: #00e5ff;
+    }
+    .btn-back-home {
+      background: linear-gradient(45deg, #0d6efd, #00e5ff);
+      color: #fff;
+      text-decoration: none;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-back-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px #00e5ff;
+      color: #000;
+    }
+
+    /* Animación del menú hamburguesa */
+    .nav-toggle.open .bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .nav-toggle.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.open .bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Estilos del Popup de Arrendamiento */
+    .leasing-popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .leasing-popup-overlay.show {
+      opacity: 1;
+    }
+    .leasing-popup-content {
+      position: relative;
+      max-width: 420px; /* Ajustado para imágenes verticales / alargadas */
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 229, 255, 0.3);
+      border: 1px solid rgba(0, 229, 255, 0.4);
+      background: #000;
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .leasing-popup-overlay.show .leasing-popup-content {
+      transform: scale(1);
+    }
+    .leasing-popup-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .leasing-popup-img:hover {
+      transform: scale(1.02);
+    }
+    .leasing-popup-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999 !important;
+      pointer-events: auto !important;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .leasing-popup-close:hover {
+      background: #00e5ff;
+      color: #000;
+      border-color: #00e5ff;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: flex;
+      }
+      .nav-links {
+        display: none;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(10, 15, 25, 0.98);
+        border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+        padding: 25px 20px;
+        gap: 15px;
+        justify-items: center;
+        align-items: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      }
+      .nav-links.open {
+        display: grid;
+      }
+      /* Hacer que el botón de Inicio ocupe el ancho completo */
+      .nav-links li:last-child {
+        grid-column: 1 / -1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .btn-back-home {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+      }
+    }
+    
+    /* Estilos de Filtros de Categoría */
+    .filters-container {
+      max-width: 960px;
+      margin: 30px auto 10px auto;
+      padding: 0 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .filter-pill {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      border: 1px solid #ddd;
+      padding: 8px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-family: var(--fuente);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      outline: none;
+    }
+    .filter-pill:hover {
+      background: #e2e2e2;
+      border-color: #bbb;
+      transform: translateY(-1px);
+    }
+    .filter-pill.active {
+      background: var(--acento);
+      color: #fff;
+      border-color: var(--acento);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .related-demo-card {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .related-demo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+  </style>
+ </head>
+ <body>
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="brand-navbar">
+    <div class="brand-nav-container">
+      <a href="../index.html" class="brand-logo">STELLANTIS <span class="accent-text">PROMOS</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="promo-sedanes.html" class="nav-item-link " id="link-sedanes">SEDANES</a></li><li><a href="promo-suvs.html" class="nav-item-link " id="link-suvs">SUVs</a></li><li><a href="promo-pickups.html" class="nav-item-link active" id="link-pickups">PICKUPS</a></li><li><a href="promo-epower.html" class="nav-item-link " id="link-epower">e-POWER</a></li><li><a href="promo-demos.html" class="nav-item-link " id="link-demos">AUTOS DEMO</a></li>
+        <li><a href="../index.html" class="btn-back-home">Inicio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  
+
+  
+  
+  <div class="grid-promos" style="margin-top: 10px; margin-bottom: 40px;">
+    
+    <article class="card" id="auto-nissan-np300" data-id="nissan-np300" data-category="pickup" style="border-top: 5px solid #b45309; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s;">
+      <div class="img-container" style="cursor: pointer; position: relative;" onclick="if(typeof gtag==='function') { gtag('event', 'click_car_card', { 'car_name': 'Nissan NP300 Chasis & Estacas', 'brand_name': 'pickups' }); }">
+        
+        <div class="card-promo-sticker" style="position: absolute; top: 12px; right: 12px; z-index: 15; background: linear-gradient(135deg, #b45309, #0b111e); color: #fff; padding: 6px 14px; border-radius: 30px; font-weight: 800; font-family: var(--fuente); font-size: 0.88rem; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 4px 14px rgba(0,0,0,0.45), 0 0 12px #b4530980; border: 1.5px solid rgba(255,255,255,0.4); display: flex; align-items: center; gap: 6px; pointer-events: none;">
+          <span style="font-size: 1.05rem;">🛠️</span>
+          <span>PLAN PYME Y FLOTILLAS DISPONIBLE</span>
+        </div>
+      
+        <img alt="Promoción Nissan NP300 Chasis & Estacas" class="card-img" decoding="async" height="450" loading="lazy" src="https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/np300_nissan.png" width="600"/>
+      </div>
+      
+      <div class="card-content" style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; background: #fff;">
+        <div>
+          
+        <div class="card-special-promo-banner" style="position: relative; overflow: hidden; background: linear-gradient(135deg, #b45309 0%, #0d1522 100%); border: 2px solid #b45309; border-radius: 8px; padding: 12px 14px; margin-bottom: 15px; box-shadow: 0 6px 18px rgba(0,0,0,0.15), 0 0 16px #b4530940;">
+          <div class="promo-banner-shimmer"></div>
+          <div style="display: flex; align-items: center; gap: 12px; position: relative; z-index: 2;">
+            <div style="background: rgba(255, 255, 255, 0.2); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.4rem; box-shadow: inset 0 0 8px rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.3);">
+              🛠️
+            </div>
+            <div style="flex-grow: 1; min-width: 0;">
+              <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; color: #f1f5f9; display: flex; align-items: center; gap: 6px; margin-bottom: 2px;">
+                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulseGlow 1.8s infinite;"></span>
+                <span>💼 LÍDER EN TRABAJO</span>
+              </div>
+              <div style="font-size: clamp(1.15rem, 3.8vw, 1.45rem); font-weight: 900; line-height: 1.15; letter-spacing: 0.5px; text-transform: uppercase; color: #ffffff; text-shadow: 0 2px 5px rgba(0,0,0,0.5); font-family: var(--fuente); word-break: break-word;">
+                PLAN PYME Y FLOTILLAS DISPONIBLE
+              </div>
+            </div>
+          </div>
+        </div>
+      
+          <!-- Badge Comercial -->
+          <span class="card-badge-comercial" style="background: #000; color: #fff; padding: 4px 8px; font-weight: bold; font-size: 0.8rem; border-radius: 4px; display: inline-block; margin-bottom: 10px; font-family: var(--fuente); letter-spacing: 0.5px; text-transform: uppercase;">
+            TIENDA OFICIAL 0 KM
+          </span>
+          
+          <!-- Nombre del Modelo -->
+          <h2 class="model-name" style="margin: 0; font-family: var(--fuente); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: #111; line-height: 1.2; cursor: pointer;" onclick="if(typeof gtag==='function') { gtag('event', 'click_car_card', { 'car_name': 'Nissan NP300 Chasis & Estacas', 'brand_name': 'pickups' }); }">
+            <span style="border-bottom: 2px solid #b45309; padding-bottom: 3px; display: inline-block;">Nissan NP300 Chasis & Estacas</span>
+          </h2>
+          
+          <!-- Marca + Icono de Verificado -->
+          <div class="brand-subname" style="color: #666; font-size: 0.9rem; margin-top: 5px; display: flex; align-items: center; gap: 4px; font-weight: bold; text-transform: uppercase; font-family: var(--fuente);">
+            PICKUPS <i class="fa-solid fa-circle-check" style="color: #1d9bf0; font-size: 0.85rem;"></i>
+          </div>
+          
+          <!-- Sección de Precios (Lista Tachado + Promoción Destacado) -->
+          <div class="price-container" style="margin-top: 15px; border-top: 1px solid #f0f0f0; padding-top: 12px;">
+            
+            <span style="font-size: 0.85rem; color: #777; display: block; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; font-family: var(--fuente);">
+              Desde
+            </span>
+            <div class="model-price" style="color: #b45309; font-size: 2.2rem; font-weight: bold; font-family: var(--fuente); line-height: 1; margin-top: 2px;">
+              Desde ,900
+            </div>
+          </div>
+          
+          
+          <!-- Acordeón Desplegable de Características, Kilometraje, Ficha Técnica y CTA -->
+          <details class="card-details-accordion" ontoggle="if(this.open && typeof gtag==='function'){ gtag('event', 'view_car_details', { 'car_name': 'Nissan NP300 Chasis & Estacas', 'brand_name': 'pickups' }); }" style="margin-top: 15px; border-top: 1px solid #f0f0f0; padding-top: 10px;">
+            <summary style="cursor: pointer; font-weight: 700; font-family: var(--fuente); color: #111; font-size: 1.05rem; display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #f8f9fa; border-radius: 6px; border: 1px solid #e9ecef; user-select: none; transition: background 0.2s; outline: none;">
+              <span><i class="fa-solid fa-list-ul" style="color: #b45309; margin-right: 6px;"></i> Ver Características y Detalles</span>
+              <i class="fa-solid fa-chevron-down accordion-arrow" style="font-size: 0.85rem; color: #b45309; transition: transform 0.3s ease;"></i>
+            </summary>
+            <div class="card-accordion-body" style="padding: 15px 5px 5px 5px;">
+              
+
+              
+                <div style="margin-bottom: 12px;">
+                  <div style="font-weight: bold; font-size: 0.9rem; text-transform: uppercase; color: #555; font-family: var(--fuente); margin-bottom: 6px;">Características Destacadas:</div>
+                  <ul class="benefits-list" style="--acento-list: #b45309; margin: 0; padding-left: 20px;">
+                    
+      <li>
+        Bono PyME de hasta ,000
+      </li>
+    
+      <li>
+        Planes especiales de flotilla y crédito comercial
+      </li>
+    
+      <li>
+        0% comisión por apertura
+      </li>
+    
+                  </ul>
+                </div>
+              
+
+              
+
+              
+                <div class="promo-main" style="font-size: 1.1rem; color: #333333; white-space: pre-line; line-height: 1.4; margin-bottom: 12px; background: #fafafa; border-left: 3px solid #b45309; padding: 10px 12px; border-radius: 0 4px 4px 0;">
+                  <span>La reina indiscutible del trabajo en México. Chasis reforzado de alta durabilidad, capaz de cargar más de 1,200 kg bajo cualquier condición de ruta.</span>
+                </div>
+              
+
+              
+                <p class="legal" style="font-size: 0.75rem; color: #999; margin: 0; line-height: 1.3;">
+                  * Aplica para versiones Chasis, Estacas y Pick Up TM.
+                </p>
+              
+            </div>
+          </details>
+      
+        </div>
+      </div>
+      
+      <!-- Botón de Cotización por WhatsApp (Fijo en la parte inferior) -->
+      <div style="padding: 0 20px 20px 20px; background: #fff;">
+        <a aria-label="Cotizar Nissan NP300 Chasis & Estacas por WhatsApp" class="btn-wa" style="background-color: #b45309; color: #fff; text-decoration: none; padding: 12px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; gap: 8px; font-size: 1.05rem; transition: background 0.3s; width: 100%; border: none; font-family: var(--fuente); text-transform: uppercase; letter-spacing: 0.5px;" href="https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20la%20Nissan%20NP300" rel="noopener" target="_blank" onclick="if(typeof gtag==='function') { gtag('event', 'click_whatsapp_cotizar', { 'car_name': 'Nissan NP300 Chasis & Estacas', 'brand_name': 'pickups' }); }">
+          <svg viewBox="0 0 24 24" style="fill: white; width: 18px; height: 18px; display: inline-block; vertical-align: middle;">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+          </svg>
+          <span>Cotizar por WhatsApp</span>
+        </a>
+      </div>
+    </article>
+    
+    <article class="card" id="auto-nissan-frontier" data-id="nissan-frontier" data-category="pickup" style="border-top: 5px solid #C3002F; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s;">
+      <div class="img-container" style="cursor: pointer; position: relative;" onclick="if(typeof gtag==='function') { gtag('event', 'click_car_card', { 'car_name': 'Nissan Frontier Doble Cabina & PRO-4X', 'brand_name': 'pickups' }); }">
+        
+        <div class="card-promo-sticker" style="position: absolute; top: 12px; right: 12px; z-index: 15; background: linear-gradient(135deg, #C3002F, #0b111e); color: #fff; padding: 6px 14px; border-radius: 30px; font-weight: 800; font-family: var(--fuente); font-size: 0.88rem; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 4px 14px rgba(0,0,0,0.45), 0 0 12px #C3002F80; border: 1.5px solid rgba(255,255,255,0.4); display: flex; align-items: center; gap: 6px; pointer-events: none;">
+          <span style="font-size: 1.05rem;">🧗</span>
+          <span>BONO DE HASTA ,000 O SEGURO GRATIS</span>
+        </div>
+      
+        <img alt="Promoción Nissan Frontier Doble Cabina & PRO-4X" class="card-img" decoding="async" height="450" loading="lazy" src="https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/frontier_nissan.png" width="600"/>
+      </div>
+      
+      <div class="card-content" style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; background: #fff;">
+        <div>
+          
+        <div class="card-special-promo-banner" style="position: relative; overflow: hidden; background: linear-gradient(135deg, #C3002F 0%, #0d1522 100%); border: 2px solid #C3002F; border-radius: 8px; padding: 12px 14px; margin-bottom: 15px; box-shadow: 0 6px 18px rgba(0,0,0,0.15), 0 0 16px #C3002F40;">
+          <div class="promo-banner-shimmer"></div>
+          <div style="display: flex; align-items: center; gap: 12px; position: relative; z-index: 2;">
+            <div style="background: rgba(255, 255, 255, 0.2); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.4rem; box-shadow: inset 0 0 8px rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.3);">
+              🧗
+            </div>
+            <div style="flex-grow: 1; min-width: 0;">
+              <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; color: #f1f5f9; display: flex; align-items: center; gap: 6px; margin-bottom: 2px;">
+                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulseGlow 1.8s infinite;"></span>
+                <span>🛻 FUERZA Y AVENTURA</span>
+              </div>
+              <div style="font-size: clamp(1.15rem, 3.8vw, 1.45rem); font-weight: 900; line-height: 1.15; letter-spacing: 0.5px; text-transform: uppercase; color: #ffffff; text-shadow: 0 2px 5px rgba(0,0,0,0.5); font-family: var(--fuente); word-break: break-word;">
+                BONO DE HASTA ,000 O SEGURO GRATIS
+              </div>
+            </div>
+          </div>
+        </div>
+      
+          <!-- Badge Comercial -->
+          <span class="card-badge-comercial" style="background: #000; color: #fff; padding: 4px 8px; font-weight: bold; font-size: 0.8rem; border-radius: 4px; display: inline-block; margin-bottom: 10px; font-family: var(--fuente); letter-spacing: 0.5px; text-transform: uppercase;">
+            TIENDA OFICIAL 0 KM
+          </span>
+          
+          <!-- Nombre del Modelo -->
+          <h2 class="model-name" style="margin: 0; font-family: var(--fuente); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: #111; line-height: 1.2; cursor: pointer;" onclick="if(typeof gtag==='function') { gtag('event', 'click_car_card', { 'car_name': 'Nissan Frontier Doble Cabina & PRO-4X', 'brand_name': 'pickups' }); }">
+            <span style="border-bottom: 2px solid #C3002F; padding-bottom: 3px; display: inline-block;">Nissan Frontier Doble Cabina & PRO-4X</span>
+          </h2>
+          
+          <!-- Marca + Icono de Verificado -->
+          <div class="brand-subname" style="color: #666; font-size: 0.9rem; margin-top: 5px; display: flex; align-items: center; gap: 4px; font-weight: bold; text-transform: uppercase; font-family: var(--fuente);">
+            PICKUPS <i class="fa-solid fa-circle-check" style="color: #1d9bf0; font-size: 0.85rem;"></i>
+          </div>
+          
+          <!-- Sección de Precios (Lista Tachado + Promoción Destacado) -->
+          <div class="price-container" style="margin-top: 15px; border-top: 1px solid #f0f0f0; padding-top: 12px;">
+            
+            <span style="font-size: 0.85rem; color: #777; display: block; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; font-family: var(--fuente);">
+              Desde
+            </span>
+            <div class="model-price" style="color: #C3002F; font-size: 2.2rem; font-weight: bold; font-family: var(--fuente); line-height: 1; margin-top: 2px;">
+              Desde ,900
+            </div>
+          </div>
+          
+          
+          <!-- Acordeón Desplegable de Características, Kilometraje, Ficha Técnica y CTA -->
+          <details class="card-details-accordion" ontoggle="if(this.open && typeof gtag==='function'){ gtag('event', 'view_car_details', { 'car_name': 'Nissan Frontier Doble Cabina & PRO-4X', 'brand_name': 'pickups' }); }" style="margin-top: 15px; border-top: 1px solid #f0f0f0; padding-top: 10px;">
+            <summary style="cursor: pointer; font-weight: 700; font-family: var(--fuente); color: #111; font-size: 1.05rem; display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #f8f9fa; border-radius: 6px; border: 1px solid #e9ecef; user-select: none; transition: background 0.2s; outline: none;">
+              <span><i class="fa-solid fa-list-ul" style="color: #C3002F; margin-right: 6px;"></i> Ver Características y Detalles</span>
+              <i class="fa-solid fa-chevron-down accordion-arrow" style="font-size: 0.85rem; color: #C3002F; transition: transform 0.3s ease;"></i>
+            </summary>
+            <div class="card-accordion-body" style="padding: 15px 5px 5px 5px;">
+              
+
+              
+                <div style="margin-bottom: 12px;">
+                  <div style="font-weight: bold; font-size: 0.9rem; text-transform: uppercase; color: #555; font-family: var(--fuente); margin-bottom: 6px;">Características Destacadas:</div>
+                  <ul class="benefits-list" style="--acento-list: #C3002F; margin: 0; padding-left: 20px;">
+                    
+      <li>
+        Bono de hasta ,000
+      </li>
+    
+      <li>
+        Tasa preferencial desde 10.99%
+      </li>
+    
+      <li>
+        Seguro en cortesía primer año
+      </li>
+    
+                  </ul>
+                </div>
+              
+
+              
+
+              
+                <div class="promo-main" style="font-size: 1.1rem; color: #333333; white-space: pre-line; line-height: 1.4; margin-bottom: 12px; background: #fafafa; border-left: 3px solid #C3002F; padding: 10px 12px; border-radius: 0 4px 4px 0;">
+                  <span>Fuerza implacable para el trabajo y confort excepcional para el día a día. Suspensión trasera de 5 brazos (multilink) que absorbe cualquier irregularidad.</span>
+                </div>
+              
+
+              
+                <p class="legal" style="font-size: 0.75rem; color: #999; margin: 0; line-height: 1.3;">
+                  * Consulta versiones gasolina y diésel 4x4.
+                </p>
+              
+            </div>
+          </details>
+      
+        </div>
+      </div>
+      
+      <!-- Botón de Cotización por WhatsApp (Fijo en la parte inferior) -->
+      <div style="padding: 0 20px 20px 20px; background: #fff;">
+        <a aria-label="Cotizar Nissan Frontier Doble Cabina & PRO-4X por WhatsApp" class="btn-wa" style="background-color: #C3002F; color: #fff; text-decoration: none; padding: 12px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; gap: 8px; font-size: 1.05rem; transition: background 0.3s; width: 100%; border: none; font-family: var(--fuente); text-transform: uppercase; letter-spacing: 0.5px;" href="https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20la%20Nissan%20Frontier" rel="noopener" target="_blank" onclick="if(typeof gtag==='function') { gtag('event', 'click_whatsapp_cotizar', { 'car_name': 'Nissan Frontier Doble Cabina & PRO-4X', 'brand_name': 'pickups' }); }">
+          <svg viewBox="0 0 24 24" style="fill: white; width: 18px; height: 18px; display: inline-block; vertical-align: middle;">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+          </svg>
+          <span>Cotizar por WhatsApp</span>
+        </a>
+      </div>
+    </article>
+    
+  </div>
+
+  
+
+  
+
+  
+  <div class="embed-footer"></div>
+
+  <!-- Popup de Arrendamiento (Vanilla CSS/JS Ligero) -->
+  <div id="leasingPopup" class="leasing-popup-overlay" style="display: none;" onclick="closeLeasingPopupOverlay(event)">
+    <div class="leasing-popup-content" onclick="event.stopPropagation()">
+      <button class="leasing-popup-close" id="closeLeasingPopup" onclick="closeLeasingPopupOverlay(event)" aria-label="Cerrar">&times;</button>
+      <a href="https://wa.me/525521787900?text=Hola,%20solicito%20información%20sobre%20el%20arrendamiento" target="_blank" id="leasingPopupLink" onclick="if(typeof gtag==='function') { gtag('event', 'click_whatsapp_leasing', { 'brand_name': 'pickups' }); }">
+        <img src="../imagenes/popup_arrendamiento.jpg" class="leasing-popup-img" alt="Promoción Especial Arrendamiento" onerror="this.onerror=null; this.src='../imagenes/carrusel_1.jpg';">
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Lógica de Menú Hamburguesa Responsivo
+      var navToggle = document.getElementById("navToggle");
+      var navLinks = document.getElementById("navLinks");
+      if (navToggle && navLinks) {
+        navToggle.addEventListener("click", function(e) {
+          e.stopPropagation();
+          navToggle.classList.toggle("open");
+          navLinks.classList.toggle("open");
+        });
+        document.addEventListener("click", function(e) {
+          if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+            navToggle.classList.remove("open");
+            navLinks.classList.remove("open");
+          }
+        });
+      }
+
+      // Lógica de Popup de Arrendamiento
+      window.closeLeasingPopupOverlay = function(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        var popup = document.getElementById('leasingPopup');
+        if (popup) {
+          if (typeof gtag === 'function' && !localStorage.getItem('leasing_popup_shown')) {
+            gtag('event', 'dismiss_popup_leasing', { 'brand_name': 'pickups' });
+          }
+          popup.classList.remove('show');
+          setTimeout(function() {
+            popup.style.display = 'none';
+            sessionStorage.setItem('leasing_popup_dismissed', 'true');
+            // Dispatch event to notify chatbot
+            var closedEvent = new CustomEvent('leasingClosed');
+            document.dispatchEvent(closedEvent);
+          }, 400);
+        }
+      };
+
+      var wasShown = localStorage.getItem('leasing_popup_shown');
+      var wasDismissed = sessionStorage.getItem('leasing_popup_dismissed');
+
+      if (!wasShown && !wasDismissed) {
+        setTimeout(function() {
+          var popup = document.getElementById('leasingPopup');
+          if (popup) {
+            popup.style.display = 'flex';
+            setTimeout(function() {
+              popup.classList.add('show');
+              if (typeof gtag === 'function') {
+                gtag('event', 'view_popup_leasing', { 'brand_name': 'pickups' });
+              }
+            }, 50);
+
+            document.getElementById('leasingPopupLink').addEventListener('click', function() {
+              localStorage.setItem('leasing_popup_shown', 'true');
+            });
+          }
+        }, 2000);
+      }
+      
+      // Lógica de Filtros de Categoría
+      var filterPills = document.querySelectorAll(".filter-pill");
+      filterPills.forEach(function(pill) {
+        pill.addEventListener("click", function() {
+          filterPills.forEach(function(p) { p.classList.remove("active"); });
+          this.classList.add("active");
+          
+          var filterVal = this.getAttribute("data-filter");
+          
+          // Filtrar Tarjetas de Nuevos y Demos Destacados
+          var cards = document.querySelectorAll(".grid-promos .card:not(.related-demo-card)");
+          cards.forEach(function(card) {
+            var cat = card.getAttribute("data-category");
+            if (filterVal === "all" || cat === filterVal) {
+              card.style.display = "";
+            } else {
+              card.style.display = "none";
+            }
+          });
+          
+          // Filtrar los acordeones de Demos agrupados por familia
+          var demoCategoryAccordions = document.querySelectorAll(".demo-category-accordion");
+          demoCategoryAccordions.forEach(function(accordion) {
+            var relatedCards = accordion.querySelectorAll(".related-demo-card");
+            var hasVisibleCard = false;
+            relatedCards.forEach(function(rc) {
+              var cat = rc.getAttribute("data-category");
+              if (filterVal === "all" || cat === filterVal) {
+                rc.style.display = "";
+                hasVisibleCard = true;
+              } else {
+                rc.style.display = "none";
+              }
+            });
+            
+            if (hasVisibleCard) {
+              accordion.style.display = "";
+              accordion.open = false; // Mantener siempre contraídos al filtrar
+            } else {
+              accordion.style.display = "none";
+            }
+          });
+          
+          // Filtrar Filas de Tabla Demos
+          var tableRows = document.querySelectorAll(".demo-excel-table tbody tr");
+          tableRows.forEach(function(row) {
+            var cat = row.getAttribute("data-category");
+            if (filterVal === "all" || cat === filterVal) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+
+          // Filtrar y Colapsar/Expandir Acordeones de Demos (Página de Demos)
+          var accordions = document.querySelectorAll(".brand-accordion:not(.demo-category-accordion)");
+          accordions.forEach(function(accordion) {
+            var rows = accordion.querySelectorAll(".demo-excel-table tbody tr");
+            var hasVisibleRow = false;
+            rows.forEach(function(r) {
+              if (r.style.display !== "none") {
+                hasVisibleRow = true;
+              }
+            });
+            
+            if (hasVisibleRow) {
+              accordion.style.display = "";
+              accordion.open = false; // Mantener siempre contraídos al filtrar
+            } else {
+              accordion.style.display = "none";
+            }
+          });
+        });
+      });
+    });
+
+    // Lógica para filtrar la tabla interactiva de demos con acordeones
+    function filterDemoTable() {
+      var input = document.getElementById("demoTableSearch");
+      if (!input) return;
+      var filter = input.value.toUpperCase();
+      
+      // Filtrar Tarjetas de Demos Destacados con Fotos
+      var cards = document.querySelectorAll(".grid-promos .card:not(.related-demo-card)");
+      cards.forEach(function(card) {
+        var txtValue = card.textContent || card.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      // Filtrar Acordeones de Tabla
+      var accordions = document.querySelectorAll(".brand-accordion");
+      accordions.forEach(function(accordion) {
+        var table = accordion.querySelector(".demo-excel-table");
+        if (!table) return;
+        var tr = table.getElementsByTagName("tr");
+        var hasVisibleRow = false;
+        
+        for (var i = 1; i < tr.length; i++) {
+          var show = false;
+          var td = tr[i].getElementsByTagName("td");
+          for (var j = 0; j < td.length; j++) {
+            if (td[j]) {
+              var txtValue = td[j].textContent || td[j].innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                show = true;
+                break;
+              }
+            }
+          }
+          tr[i].style.display = show ? "" : "none";
+          if (show) {
+            hasVisibleRow = true;
+          }
+        }
+        
+        if (filter.length > 0) {
+          if (hasVisibleRow) {
+            accordion.style.display = "";
+            accordion.open = true;
+          } else {
+            accordion.style.display = "none";
+            accordion.open = false;
+          }
+        } else {
+          accordion.style.display = "";
+          accordion.open = false;
+        }
+      });
+    }
+  </script>
+  
+  <!-- Chatbot Asistente IA -->
+  <style>
+    .chatbot-container {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 999999;
+      font-family: Arial, sans-serif;
+    }
+    .chatbot-launcher {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--acento);
+      border: 3px solid #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .chatbot-launcher:hover {
+      transform: scale(1.08);
+    }
+    .launcher-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .launcher-badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background: #ff3b30;
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-5px); }
+      60% { transform: translateY(-3px); }
+    }
+    .chatbot-window {
+      position: absolute;
+      bottom: 75px;
+      right: 0;
+      width: 330px;
+      height: 460px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid #eee;
+    }
+    .chatbot-window.active {
+      transform: scale(1);
+    }
+    .chatbot-header {
+      padding: 12px 15px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .chat-header-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      margin-right: 10px;
+    }
+    .chat-header-info {
+      flex: 1;
+    }
+    .chat-header-name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .chat-header-status {
+      font-size: 11px;
+      opacity: 0.9;
+    }
+    .chatbot-close-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+    .chatbot-body {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background: #fdfdfd;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .chat-message {
+      max-width: 85%;
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-message .message-content {
+      padding: 10px 14px;
+      border-radius: 15px;
+      font-size: 13.5px;
+      line-height: 1.4;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+    .bot-message {
+      align-self: flex-start;
+    }
+    .bot-message .message-content {
+      background: #f0f0f0;
+      color: #333;
+      border-bottom-left-radius: 3px;
+    }
+    .user-message {
+      align-self: flex-end;
+    }
+    .user-message .message-content {
+      background: var(--acento);
+      color: #fff;
+      border-bottom-right-radius: 3px;
+    }
+    .chatbot-options {
+      padding: 10px 15px;
+      background: #fff;
+      border-top: 1px solid #f0f0f0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+    .option-btn {
+      background: #fff;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: bold;
+    }
+    .option-btn:hover {
+      background: #f5f5f5;
+      border-color: #bbb;
+      color: #333;
+    }
+    .chatbot-input-area {
+      display: flex;
+      padding: 10px 15px;
+      border-top: 1px solid #eee;
+      background: #fff;
+    }
+    .chatbot-input-area input {
+      flex: 1;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 13px;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .chatbot-input-area input:focus {
+      border-color: var(--acento);
+    }
+    .chatbot-input-area button {
+      border: none;
+      color: #fff;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      margin-left: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    .chatbot-input-area button:hover {
+      transform: scale(1.05);
+    }
+    .chat-card-suggestion {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 8px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .chat-card-body {
+      padding: 8px 12px;
+    }
+    .chat-card-title {
+      font-size: 13px;
+      font-weight: bold;
+      margin: 0 0 3px 0;
+      color: #333;
+    }
+    .chat-card-price {
+      font-size: 12px;
+      color: var(--acento);
+      font-weight: bold;
+      margin: 0 0 5px 0;
+    }
+    .chat-card-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 6px;
+      background: #f5f5f5;
+      color: #333;
+      font-size: 11px;
+      text-decoration: none;
+      font-weight: bold;
+      border-top: 1px solid #eee;
+      transition: background 0.2s;
+    }
+    .chat-card-btn:hover {
+      background: #e9e9e9;
+    }
+  </style>
+
+  <div id="chatbotContainer" class="chatbot-container">
+    <button id="chatbotLauncher" class="chatbot-launcher" aria-label="Abrir Asistente" style="background: var(--acento); display: flex; align-items: center; justify-content: center;">
+      <div class="launcher-avatar-svg" style="width: 32px; height: 32px; color: #fff;">
+        <svg viewBox="0 0 24 24" style="fill: currentColor; width: 100%; height: 100%;">
+          <path d="M12 2c0 5.523-4.477 10-10 10 5.523 0 10 4.477 10 10 0-5.523 4.477-10 10-10-5.523 0-10-4.477-10-10z"/>
+          <path d="M19 4.5c0 1.38-1.12 2.5-2.5 2.5 1.38 0 2.5 1.12 2.5 2.5 0-1.38 1.12-2.5 2.5-2.5-1.38 0-2.5-1.12-2.5-2.5z" opacity="0.8"/>
+          <path d="M5 16.5c0 .83-.67 1.5-1.5 1.5.83 0 1.5.67 1.5 1.5 0-.83.67-1.5 1.5-1.5-.83 0-1.5-.67-1.5-1.5z" opacity="0.6"/>
+        </svg>
+      </div>
+      <span class="launcher-badge">1</span>
+    </button>
+    
+    <div id="chatbotWindow" class="chatbot-window">
+      <div class="chatbot-header" style="background: var(--acento); display: flex; align-items: center; padding: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); color: #fff; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+        <div class="chat-header-avatar-svg" style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; color: #fff; padding: 6px;">
+          <svg viewBox="0 0 24 24" style="fill: currentColor; width: 100%; height: 100%;">
+            <path d="M12 2c0 5.523-4.477 10-10 10 5.523 0 10 4.477 10 10 0-5.523 4.477-10 10-10-5.523 0-10-4.477-10-10z"/>
+            <path d="M19 4.5c0 1.38-1.12 2.5-2.5 2.5 1.38 0 2.5 1.12 2.5 2.5 0-1.38 1.12-2.5 2.5-2.5-1.38 0-2.5-1.12-2.5-2.5z" opacity="0.8"/>
+            <path d="M5 16.5c0 .83-.67 1.5-1.5 1.5.83 0 1.5.67 1.5 1.5 0-.83.67-1.5 1.5-1.5-.83 0-1.5-.67-1.5-1.5z" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="chat-header-info">
+          <h4 class="chat-header-name" style="margin: 0; font-size: 1.05rem; font-weight: bold; color: #fff; line-height: 1.2;">Asistente Virtual</h4>
+          <span class="chat-header-status" style="font-size: 0.8rem; opacity: 0.9; display: block; margin-top: 2px; color: #fff;">IA Stellantis • En Línea</span>
+        </div>
+        <button id="chatbotClose" class="chatbot-close-btn" aria-label="Cerrar Asistente" style="margin-left: auto; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; line-height: 1;">&times;</button>
+      </div>
+      
+      <div id="chatbotBody" class="chatbot-body"></div>
+      <div id="chatbotOptions" class="chatbot-options"></div>
+      
+      <div class="chatbot-input-area">
+        <input type="text" id="chatbotInput" placeholder="Escribe tu pregunta o duda...">
+        <button id="chatbotSend" style="background: var(--acento);"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var launcher = document.getElementById("chatbotLauncher");
+      var windowEl = document.getElementById("chatbotWindow");
+      var closeBtn = document.getElementById("chatbotClose");
+      var body = document.getElementById("chatbotBody");
+      var optionsContainer = document.getElementById("chatbotOptions");
+      var input = document.getElementById("chatbotInput");
+      var sendBtn = document.getElementById("chatbotSend");
+      
+      var kb = {"sedanes":{"welcome":"¡Hola! Bienvenido a la línea de Sedanes Nissan. 🚗 Contamos con autos reconocidos por su confiabilidad, rendimiento de combustible y tecnología Nissan Intelligent Mobility. ¿Qué buscas principalmente?","options":[{"label":"🏙️ Ciudad y Ahorro (Versa)","filter":"versa","reply":"Excelente opción. El Nissan Versa es el sedán favorito por su gran rendimiento, cajuela espaciosa y 6 bolsas de aire de serie en todas sus versiones. Conoce nuestras promociones:"},{"label":"✨ Estilo y Potencia (Sentra)","filter":"sentra","reply":"Gran elección. El Nissan Sentra destaca por su diseño atlético, motor 2.0L y acabados premium con asistencias de frenado inteligente:"},{"label":"👑 Ejecutivo y Lujo (Altima)","filter":"altima","reply":"El sedán más sofisticado. Nissan Altima ofrece motor VC-Turbo revolucionario, tracción avanzada y asistencias ProPILOT Assist:"}]},"suvs":{"welcome":"¡Hola! Bienvenido al portal de SUVs Nissan. 🚙 Tenemos modelos diseñados para la aventura urbana y los viajes en familia. ¿Qué tipo de SUV se adapta a ti?","options":[{"label":"🌟 Urbana y Ágil (Kicks)","filter":"kicks","reply":"¡Nissan Kicks es perfecta para moverte por la ciudad con total libertad, sistema de audio Bose y visión 360°! Revisa las opciones:"},{"label":"👨‍👩‍👧‍👦 Familiar 2 o 3 Filas (X-Trail)","filter":"xtrail","reply":"Espacio, comodidad y máxima seguridad. Nissan X-Trail te ofrece versiones con 2 o 3 filas de asientos y techo panorámico:"},{"label":"⛰️ Lujo y Aventura V6 (Pathfinder)","filter":"pathfinder","reply":"Poder total para tu familia. Nissan Pathfinder cuenta con motor V6 de 270 hp, tracción 4WD inteligente y capacidad para 8 pasajeros:"}]},"pickups":{"welcome":"¡Hola! Bienvenido a la sección de Pickups y Comerciales Nissan. 🛻 La línea de pickups líder en México por su durabilidad y costo de mantenimiento. ¿Cuál es tu objetivo?","options":[{"label":"💼 Trabajo Rudo (NP300)","filter":"np300","reply":"La aliada perfecta para tu negocio. NP300 Chasis, Estacas y Pick-up están listas para cualquier carga con capacidades superiores a 1 tonelada:"},{"label":"🧗 Aventura y Familia (Frontier)","filter":"frontier","reply":"Potencia y confort sin compromisos. Frontier Doble Cabina y PRO-4X combinan suspensión trasera multilink, tracción 4x4 y tecnología:"}]},"epower":{"welcome":"¡Bienvenido al futuro de la movilidad con Nissan e-POWER! ⚡ ¿Sabías que disfrutas de una conducción 100% eléctrica pero sin necesidad de conectarte a una toma de corriente?","options":[{"label":"⚡ ¿Cómo funciona e-POWER?","filter":"epower","reply":"Las ruedas son impulsadas 100% por un motor eléctrico. Cuenta con un motor a gasolina que solo genera energía eléctrica para la batería. Aceleración inmediata, silencio de marcha y autonomía de más de 900 km por tanque."},{"label":"🚗 Kicks e-POWER","filter":"kicks-epower","reply":"Toda la agilidad de Nissan Kicks combinada con la aceleración instantánea y el modo e-Step para conducir con un solo pedal:"},{"label":"🚙 X-Trail e-POWER","filter":"xtrail-epower","reply":"Potencia de tracción eléctrica integral e-4ORCE para control superior en lluvia o curvas, con el confort y espacio característico de X-Trail:"}]},"demos":{"welcome":"¡Hola! Estás en la sección de Unidades Demo y Seminuevos Garantizados Nissan. 🏷️ Autos con poco kilometraje, factura de agencia y condiciones comerciales excepcionales. ¿Qué buscas?","options":[{"label":"🚗 Sedanes Seminuevos","filter":"sedan","reply":"Revisa nuestras unidades Versa y Sentra demo con garantía y bonos de liquidación especial:"},{"label":"🚙 SUVs Seminuevas","filter":"suv","reply":"Oportunidades únicas en Kicks y X-Trail demo con entrega inmediata:"},{"label":"🛻 Pickups Seminuevas","filter":"pickup","reply":"Unidades Frontier de trabajo o uso particular inspeccionadas por nuestros técnicos certificados:"}]}};
+      var brandKey = "pickups";
+      var config = kb[brandKey] || kb["general"];
+      
+      launcher.addEventListener("click", function() {
+        windowEl.classList.toggle("active");
+        var badge = launcher.querySelector(".launcher-badge");
+        if (badge) badge.style.display = "none";
+      });
+      
+      closeBtn.addEventListener("click", function() {
+        windowEl.classList.remove("active");
+      });
+      
+      var openChat = function() {
+        var isDismissed = sessionStorage.getItem("chatbot_dismissed");
+        if (!isDismissed && !windowEl.classList.contains("active")) {
+          windowEl.classList.add("active");
+          var badge = launcher.querySelector(".launcher-badge");
+          if (badge) badge.style.display = "none";
+          sessionStorage.setItem("chatbot_dismissed", "true");
+        }
+      };
+
+      var wasShownLeasing = localStorage.getItem('leasing_popup_shown');
+      var wasDismissedLeasing = sessionStorage.getItem('leasing_popup_dismissed');
+      var leasingPopupEl = document.getElementById('leasingPopup');
+
+      if (leasingPopupEl && !wasShownLeasing && !wasDismissedLeasing) {
+        document.addEventListener('leasingClosed', function() {
+          setTimeout(openChat, 1500);
+        });
+      } else {
+        setTimeout(openChat, 4000);
+      }
+
+      function appendMessage(text, isBot, cards) {
+        var msg = document.createElement("div");
+        msg.className = "chat-message " + (isBot ? "bot-message" : "user-message");
+        
+        var content = document.createElement("div");
+        content.className = "message-content";
+        content.innerText = text;
+        msg.appendChild(content);
+        
+        if (cards && cards.length > 0) {
+          cards.forEach(function(c) {
+            var cardEl = document.createElement("div");
+            cardEl.className = "chat-card-suggestion";
+            cardEl.innerHTML = '<div class="chat-card-body">' +
+              '<h5 class="chat-card-title">' + c.name + '</h5>' +
+              '<p class="chat-card-price">' + c.price + '</p>' +
+              '</div>' +
+              '<a href="#" class="chat-card-btn" data-target-id="' + c.id + '">📍 Ver unidad en pantalla</a>';
+            
+            cardEl.querySelector("a").addEventListener("click", function(e) {
+              e.preventDefault();
+              var targetId = this.getAttribute("data-target-id");
+              
+              var cardsElements = document.querySelectorAll(".card, tr");
+              var targetEl = null;
+              
+              if (targetId) {
+                cardsElements.forEach(function(el) {
+                  if (el.getAttribute("id") === targetId) {
+                    targetEl = el;
+                  }
+                  var waBtn = el.querySelector(".btn-wa, .btn-wa-table");
+                  if (waBtn && waBtn.getAttribute("href") && waBtn.getAttribute("href").includes(targetId)) {
+                    targetEl = el;
+                  }
+                });
+              }
+              
+              if (!targetEl) {
+                cardsElements.forEach(function(el) {
+                  var headerText = el.innerText || '';
+                  if (headerText.toUpperCase().includes(c.name.toUpperCase())) {
+                    targetEl = el;
+                  }
+                });
+              }
+
+              if (targetEl) {
+                var parentDetails = targetEl.closest("details");
+                if (parentDetails) {
+                  parentDetails.open = true;
+                }
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                var originalBorder = targetEl.style.borderColor;
+                targetEl.style.boxShadow = "0 0 25px " + (targetEl.style.borderTopColor || "var(--acento)");
+                setTimeout(function() {
+                  targetEl.style.boxShadow = "";
+                }, 3000);
+                windowEl.classList.remove("active");
+              } else {
+                alert("Para ver este vehículo demo te llevaremos a la sección correspondiente.");
+                window.location.href = "../paginas_promo/promo-demos.html";
+              }
+            });
+            msg.appendChild(cardEl);
+          });
+        }
+        
+        body.appendChild(msg);
+        body.scrollTop = body.scrollHeight;
+      }
+      
+      function loadOptions(options) {
+        optionsContainer.innerHTML = "";
+        options.forEach(function(opt) {
+          var btn = document.createElement("button");
+          btn.className = "option-btn";
+          btn.innerText = opt.label;
+          btn.addEventListener("click", function() {
+            appendMessage(opt.label, false);
+            handleOptionSelect(opt);
+          });
+          optionsContainer.appendChild(btn);
+        });
+        
+        if (options !== kb.faq.options) {
+          var faqBtn = document.createElement("button");
+          faqBtn.className = "option-btn";
+          faqBtn.style.borderColor = "var(--acento)";
+          faqBtn.innerText = "❓ Preguntas Frecuentes";
+          faqBtn.addEventListener("click", function() {
+            appendMessage("Preguntas Frecuentes", false);
+            appendMessage(kb.faq.welcome, true);
+            loadOptions(kb.faq.options);
+          });
+          optionsContainer.appendChild(faqBtn);
+        } else {
+          var backBtn = document.createElement("button");
+          backBtn.className = "option-btn";
+          backBtn.innerText = "⬅️ Volver al inicio";
+          backBtn.addEventListener("click", function() {
+            appendMessage("Volver al inicio", false);
+            initChat();
+          });
+          optionsContainer.appendChild(backBtn);
+        }
+      }
+
+      function handleOptionSelect(opt) {
+        appendMessage("De acuerdo. Buscando opciones...", true);
+        
+        setTimeout(function() {
+          var msgs = body.querySelectorAll(".bot-message");
+          for (var idx = msgs.length - 1; idx >= 0; idx--) {
+            if (msgs[idx].innerText.includes("Buscando opciones")) {
+              msgs[idx].remove();
+              break;
+            }
+          }
+          
+          if (opt.filter) {
+            var targetPill = document.querySelector('.filter-pill[data-filter="' + opt.filter + '"]');
+            if (targetPill) {
+              targetPill.click();
+            }
+            var suggestions = [];
+            var cards = document.querySelectorAll(".grid-promos .card, .related-demo-card");
+            
+            cards.forEach(function(card) {
+              if (card.getAttribute("data-category") === opt.filter) {
+                var nameEl = card.querySelector(".model-name");
+                var priceEl = card.querySelector(".model-price");
+                var name = nameEl ? nameEl.innerText : "";
+                var price = priceEl ? priceEl.innerText : "";
+                var id = card.getAttribute("id") || "";
+                
+                if (name && !suggestions.some(s => s.name === name)) {
+                  suggestions.push({ id: id, name: name, price: price });
+                }
+              }
+            });
+            
+            var tableRows = document.querySelectorAll(".demo-excel-table tbody tr");
+            tableRows.forEach(function(row) {
+              if (row.getAttribute("data-category") === opt.filter) {
+                var tds = row.getElementsByTagName("td");
+                if (tds.length >= 6) {
+                  var nameVal = tds[1].innerText + " (Demo)";
+                  var priceVal = tds[5].innerText;
+                  var idVal = row.getAttribute("id") || "";
+                  
+                  if (!suggestions.some(s => s.name === nameVal)) {
+                    suggestions.push({ id: idVal, name: nameVal, price: priceVal });
+                  }
+                }
+              }
+            });
+
+            var limitedSuggestions = suggestions.slice(0, 3);
+            
+            if (limitedSuggestions.length > 0) {
+              appendMessage(opt.reply, true, limitedSuggestions);
+            } else {
+              appendMessage("Actualmente no tenemos unidades publicadas en esta categoría para esta marca, pero te podemos cotizar sobre pedido. ¡Escríbenos por WhatsApp!", true);
+            }
+          } else if (opt.reply) {
+            appendMessage(opt.reply, true);
+            
+            var optLabel = opt.label.toLowerCase();
+            var waText = "Hola Luis Fernando Martínez, solicito información.";
+            
+            if (optLabel.includes("crédito") || optLabel.includes("credito")) {
+              waText = "quiero informacion de credito";
+            } else if (optLabel.includes("arrendamiento") || optLabel.includes("leasing")) {
+              waText = "quiero informacion de arrendamiento";
+            } else if (optLabel.includes("ubic") || optLabel.includes("dónde") || optLabel.includes("donde")) {
+              waText = "quiero agendar una cita";
+            } else if (optLabel.includes("manejo") || optLabel.includes("prueba")) {
+              waText = "quiero agendar una prueba de manejo";
+            }
+            
+            optionsContainer.innerHTML = "";
+            
+            var waBtn = document.createElement("button");
+            waBtn.className = "option-btn";
+            waBtn.style.background = "#25d366";
+            waBtn.style.color = "#fff";
+            waBtn.innerText = "💬 Hablar con Luis Fernando";
+            waBtn.addEventListener("click", function() {
+              window.open("https://wa.me/525521787900?text=" + encodeURIComponent(waText), "_blank");
+            });
+            optionsContainer.appendChild(waBtn);
+          }
+          
+          var menuBtn = document.createElement("button");
+          menuBtn.className = "option-btn";
+          menuBtn.innerText = "⬅️ Menú Principal";
+          menuBtn.addEventListener("click", function() {
+            appendMessage("Menú Principal", false);
+            initChat();
+          });
+          optionsContainer.appendChild(menuBtn);
+        }, 800);
+      }
+      
+      function handleTextQuery() {
+        var query = input.value.trim().toLowerCase();
+        if (!query) return;
+        
+        appendMessage(input.value, false);
+        input.value = "";
+        
+        appendMessage("Pensando...", true);
+        
+        setTimeout(function() {
+          var msgs = body.querySelectorAll(".bot-message");
+          for (var idx = msgs.length - 1; idx >= 0; idx--) {
+            if (msgs[idx].innerText.includes("Pensando")) {
+              msgs[idx].remove();
+              break;
+            }
+          }
+          
+          // Filtrar por palabras financieras, buró de crédito o entregas
+          var replyMsg = "";
+          var queryWaText = "Hola Luis Fernando Martínez, solicito información y asistencia.";
+          
+          if (query.includes("crédito") || query.includes("credito") || query.includes("buró") || query.includes("buro")) {
+            replyMsg = "Entendido. Para darte una respuesta precisa sobre tu crédito o buró de crédito, te pondré en contacto directo con nuestro asesor experto en la materia, Luis Fernando Martínez, por WhatsApp. Él analizará tu caso personalmente para darte la mejor opción. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
+            queryWaText = "quiero informacion de credito";
+          } else if (query.includes("arrendamiento") || query.includes("leasing")) {
+            replyMsg = "Entendido. Para darte una cotización exacta de arrendamiento y explicarte los beneficios fiscales, te pondré en contacto directo con nuestro asesor experto, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
+            queryWaText = "quiero informacion de arrendamiento";
+          } else if (query.includes("contado") || query.includes("precio")) {
+            replyMsg = "Entendido. Para ofrecerte el mejor precio de contado y descuentos vigentes, te pondré en contacto directo con tu asesor experto en la materia, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
+            queryWaText = "quiero informacion de contado";
+          } else if (query.includes("entrega") || query.includes("entregar") || query.includes("tiempo")) {
+            replyMsg = "Entendido. Para darte los tiempos exactos de entrega de las unidades en inventario o pedido especial, te pondré en contacto directo con tu asesor experto en la materia, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
+            queryWaText = "quiero informacion de entrega";
+          } else if (query.includes("cotiz") || query.includes("informe") || query.includes("información") || query.includes("informacion") || query.includes("info")) {
+            replyMsg = "Entendido. Para darte una cotización exacta o brindarte informes detallados sobre cualquier unidad, te pondré en contacto directo con tu asesor experto en la materia, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
+            queryWaText = "quiero cotizacion e informes";
+          } else if (query.includes("ubicaci") || query.includes("donde est") || query.includes("dónde est") || query.includes("direcci") || query.includes("cita") || query.includes("agendar")) {
+            replyMsg = "Entendido. Para darte nuestra ubicación exacta, coordinar tu visita a nuestra sala de ventas o agendar una cita con nuestro asesor experto Luis Fernando Martínez, te pondré en contacto directo por WhatsApp. Por favor, haz clic en el botón de abajo para que te enviemos la información.";
+            queryWaText = "quiero agendar una cita";
+          }
+          
+          if (replyMsg) {
+            appendMessage(replyMsg, true);
+            optionsContainer.innerHTML = "";
+            
+            var waBtn = document.createElement("button");
+            waBtn.className = "option-btn";
+            waBtn.style.background = "#25d366";
+            waBtn.style.color = "#fff";
+            waBtn.innerText = "💬 Hablar con Luis Fernando";
+            waBtn.addEventListener("click", function() {
+              window.open("https://wa.me/525521787900?text=" + encodeURIComponent(queryWaText), "_blank");
+            });
+            optionsContainer.appendChild(waBtn);
+            
+            var backBtn = document.createElement("button");
+            backBtn.className = "option-btn";
+            backBtn.innerText = "⬅️ Menú Principal";
+            backBtn.addEventListener("click", function() {
+              initChat();
+            });
+            optionsContainer.appendChild(backBtn);
+            return;
+          }
+          
+          var matchedFaq = null;
+          kb.faq.options.forEach(function(opt) {
+            var labelLower = opt.label.toLowerCase();
+            var replyLower = opt.reply.toLowerCase();
+            
+            if (labelLower.includes(query) || query.includes(labelLower.replace(/[^a-z0-9 ]/g, "").trim()) || replyLower.includes(query)) {
+              matchedFaq = opt;
+            }
+          });
+          
+          if (matchedFaq) {
+            appendMessage(matchedFaq.reply, true);
+          } else {
+            appendMessage("Entendido. Para aclarar tus dudas de manera detallada y ofrecerte la mejor alternativa, te pondré en contacto directo con tu asesor experto en la materia, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.", true);
+            optionsContainer.innerHTML = "";
+            
+            var waBtn = document.createElement("button");
+            waBtn.className = "option-btn";
+            waBtn.style.background = "#25d366";
+            waBtn.style.color = "#fff";
+            waBtn.innerText = "💬 Hablar con Luis Fernando";
+            waBtn.addEventListener("click", function() {
+              window.open("https://wa.me/525521787900?text=Hola%20Luis%20Fernando%20Mart%C3%ADnez,%20necesito%20aclarar%20unas%20dudas%20detalladas.", "_blank");
+            });
+            optionsContainer.appendChild(waBtn);
+            
+            var backBtn = document.createElement("button");
+            backBtn.className = "option-btn";
+            backBtn.innerText = "⬅️ Menú Principal";
+            backBtn.addEventListener("click", function() {
+              initChat();
+            });
+            optionsContainer.appendChild(backBtn);
+          }
+        }, 600);
+      }
+      
+      sendBtn.addEventListener("click", handleTextQuery);
+      input.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+          handleTextQuery();
+        }
+      });
+      
+      function initChat() {
+        body.innerHTML = "";
+        appendMessage(config.welcome, true);
+        loadOptions(config.options);
+      }
+      
+      initChat();
+    });
+
+    // Slider Carousel Script for Multi-Photos
+    var carouselStates = {};
+
+    window.initCarousels = function() {
+      document.querySelectorAll('.carousel').forEach(function(el) {
+        var id = el.id.replace('carousel-', '');
+        var track = el.querySelector('.carousel-track');
+        var slides = el.querySelectorAll('.carousel-slide');
+        var indicators = el.querySelectorAll('.indicator');
+        
+        carouselStates[id] = {
+          currentIdx: 0,
+          totalSlides: slides.length,
+          track: track,
+          indicators: indicators
+        };
+        
+        // Touch/Swipe support
+        var startX = 0;
+        var isDragging = false;
+        
+        el.addEventListener('touchstart', function(e) {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+        }, { passive: true });
+        
+        el.addEventListener('touchend', function(e) {
+          if (!isDragging) return;
+          var endX = e.changedTouches[0].clientX;
+          var diff = startX - endX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              moveCarousel(id, 1);
+            } else {
+              moveCarousel(id, -1);
+            }
+          }
+          isDragging = false;
+        }, { passive: true });
+        
+        // Mouse drag/swipe support
+        el.addEventListener('mousedown', function(e) {
+          startX = e.clientX;
+          isDragging = true;
+        });
+        
+        el.addEventListener('mouseup', function(e) {
+          if (!isDragging) return;
+          var endX = e.clientX;
+          var diff = startX - endX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              moveCarousel(id, 1);
+            } else {
+              moveCarousel(id, -1);
+            }
+          }
+          isDragging = false;
+        });
+      });
+    };
+
+    window.moveCarousel = function(id, dir, event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      var state = carouselStates[id];
+      if (!state) return;
+      
+      var nextIdx = state.currentIdx + dir;
+      if (nextIdx < 0) {
+        nextIdx = state.totalSlides - 1;
+      } else if (nextIdx >= state.totalSlides) {
+        nextIdx = 0;
+      }
+      
+      setCarouselSlide(id, nextIdx);
+    };
+
+    window.setCarouselSlide = function(id, idx, event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      var state = carouselStates[id];
+      if (!state) return;
+      
+      state.currentIdx = idx;
+      state.track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      
+      state.indicators.forEach(function(ind, i) {
+        if (i === idx) {
+          ind.classList.add('active');
+        } else {
+          ind.classList.remove('active');
+        }
+      });
+    };
+
+    // Auto-focus and highlight car when arriving with #auto-[id]
+    function checkHashAndFocus() {
+      if (!window.location.hash) return;
+      var hash = window.location.hash.replace('#', '');
+      var targetCard = document.getElementById(hash) || document.getElementById('auto-' + hash);
+      if (!targetCard) {
+        var allCards = document.querySelectorAll('.card');
+        for (var i = 0; i < allCards.length; i++) {
+          if (allCards[i].id === hash || allCards[i].id === 'auto-' + hash || (allCards[i].getAttribute('data-id') === hash)) {
+            targetCard = allCards[i];
+            break;
+          }
+        }
+      }
+      if (targetCard) {
+        setTimeout(function() {
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          var details = targetCard.querySelector('.card-details-accordion');
+          if (details) details.open = true;
+          var acColor = targetCard.style.borderTopColor || 'var(--acento)';
+          targetCard.style.transition = 'all 0.4s ease';
+          targetCard.style.boxShadow = '0 0 35px ' + acColor + ', 0 10px 30px rgba(0,0,0,0.3)';
+          targetCard.style.transform = 'scale(1.025)';
+          setTimeout(function() {
+            targetCard.style.boxShadow = '';
+            targetCard.style.transform = '';
+          }, 3500);
+
+          // Registrar evento en Google Analytics (view_shared_car)
+          if (!targetCard.dataset.trackedView) {
+            targetCard.dataset.trackedView = 'true';
+            try {
+              var carNameEl = targetCard.querySelector('.model-name span') || targetCard.querySelector('.model-name');
+              var carName = carNameEl ? carNameEl.textContent.trim() : (targetCard.getAttribute('data-id') || 'Auto');
+              if (typeof gtag === 'function') {
+                gtag('event', 'view_shared_car', {
+                  'car_name': carName,
+                  'brand_name': 'pickups',
+                  'car_id': hash,
+                  'source': 'enlace_directo_cliente'
+                });
+              }
+            } catch (e) {}
+          }
+        }, 350);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', checkHashAndFocus);
+    window.addEventListener('hashchange', checkHashAndFocus);
+
+    // Initialize carousels
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCarousels);
+    } else {
+      initCarousels();
+    }
+  </script>
+ </body>
+</html>

@@ -1,0 +1,478 @@
+:root {
+    --primary-color: #C3002F; /* Rojo Nissan oficial */
+    --primary-glow: rgba(195, 0, 47, 0.6);
+    --accent-color: #e6002e;
+    --dark-bg: #0b0f17; /* Color corporativo profundo */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--dark-bg);
+    
+    /* Fondo base (escritorio por defecto) */
+    background-image: url('../imagenes/fondo_escritorio.png');
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    color: #fff;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23C3002F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>') 12 12, auto;
+    overflow-x: hidden;
+}
+
+/* Regla para teléfonos móviles */
+@media (max-width: 768px) {
+    body {
+        background-image: url('../imagenes/fondo_movil.png');
+        /* Para intentar esconder el menú hamburguesa desde el código, movemos la imagen un poco hacia arriba */
+        background-position: center -60px; 
+    }
+    
+    /* Ajustes para el Carrusel Principal (Hero) en Móviles */
+    .hero-section {
+        height: 55vh !important;
+        min-height: 400px !important;
+    }
+    
+    .hero-content {
+        padding-top: 4.5rem !important; /* Más espacio arriba en móvil para bajar el contenido */
+        padding-bottom: 10px !important;
+    }
+    
+    #heroCarousel .carousel-item {
+        min-height: 55vh !important;
+        background-size: cover !important;
+        background-position: center bottom !important;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem !important;
+    }
+    
+    .hero-content p {
+        font-size: 1rem !important;
+    }
+
+    .hero-content .btn-glow {
+        padding: 8px 18px !important;
+        font-size: 0.75rem !important;
+        margin-top: 0.5rem !important;
+    }
+}
+
+/* Links also get custom cursor */
+a, button, .btn {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%2300e5ff" stroke="%2300e5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>') 12 12, pointer !important;
+}
+
+/* Typography */
+.tracking-wide {
+    letter-spacing: 0.1em;
+}
+
+.text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.heading-line {
+    height: 3px;
+    width: 60px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+/* Navbar */
+.glass-navbar {
+    background: rgba(15, 17, 21, 0.8) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    /* Difuminar la parte de abajo para integración suave con la página */
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+.bg-cover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+    padding-top: 4.5rem !important;
+    padding-bottom: 0px !important;
+}
+
+/* Glowing Button */
+.btn-glow {
+    background: linear-gradient(45deg, var(--primary-color), #0a58ca);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.btn-glow:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 30px var(--accent-color);
+    color: white;
+}
+
+/* Glass Cards */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 1rem;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.carousel-item {
+    min-height: 100vh;
+    transition: transform 1.5s ease-in-out;
+    filter: brightness(1.2); /* Aumento de brillo solicitado */
+}
+
+/* Reglas específicas para el Carrusel de Ofertas en Móviles */
+@media (max-width: 768px) {
+    #ofertasCarousel {
+        overflow: visible;
+    }
+    
+    #ofertasCarousel .carousel-inner {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+        padding: 1rem 0;
+        scrollbar-width: none; /* Ocultar barra en Firefox */
+    }
+    
+    #ofertasCarousel .carousel-inner::-webkit-scrollbar {
+        display: none; /* Ocultar barra en Chrome/Safari */
+    }
+    
+    #ofertasCarousel .carousel-item {
+        display: block !important; /* Sobrescribir display none de Bootstrap */
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    #ofertasCarousel .carousel-item .row {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        margin: 0 !important;
+        gap: 1.5rem;
+    }
+    
+    #ofertasCarousel .carousel-item .col-md-5 {
+        flex: 0 0 82vw !important;
+        width: 82vw !important;
+        max-width: 320px;
+        scroll-snap-align: center;
+        padding: 0 !important;
+    }
+    
+    #ofertasCarousel .carousel-control-prev,
+    #ofertasCarousel .carousel-control-next {
+        display: none !important;
+    }
+}
+
+.promo-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.glass-card:hover .promo-img {
+    transform: scale(1.05);
+}
+
+/* Gradients & Backgrounds */
+.dark-gradient {
+    background-color: var(--dark-bg);
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.08), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(13, 110, 253, 0.08), transparent 40%),
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+}
+
+.tech-blue-gradient {
+    /* Fondo transparente para que se vea el fondo maestro */
+    background-color: transparent; 
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-image: none;
+}
+
+/* Model Cards */
+.model-card {
+    height: 400px;
+    cursor: pointer;
+}
+
+.model-card img {
+    transition: transform 0.6s ease;
+}
+
+.model-card:hover img {
+    transform: scale(1.1);
+}
+
+.model-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+}
+
+.btn-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.model-card:hover .btn-icon {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #000;
+    transform: translateX(5px);
+}
+
+/* AI Tech Background for Brands */
+.bg-ia {
+    background-image: url('../imagenes/fondo_ia_marcas.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+.bg-ia::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 15, 25, 0.7); /* Dark overlay to make logos pop */
+    z-index: 0;
+}
+.bg-ia > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* 1080x1080 Brand Upload Module */
+.brand-module-card {
+    aspect-ratio: 1 / 1; /* Forces perfect square */
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
+    transition: all 0.4s ease;
+}
+.brand-module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+    border-color: rgba(0, 229, 255, 0.8);
+}
+.brand-module-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.brand-module-card:hover .brand-module-img {
+    transform: scale(1.05);
+}
+.brand-module-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+}
+
+/* Indicador de Deslizamiento (Mobile Scroll Hint) */
+.scroll-hint-container {
+    display: inline-block;
+    background: rgba(13, 110, 253, 0.15);
+    border: 1px solid rgba(13, 110, 253, 0.3);
+    padding: 6px 16px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    animation: fadeIn 1s ease-out;
+}
+
+.scroll-hint-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #07101e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.scroll-hint-arrow {
+    color: var(--primary-color);
+    animation: pointRight 1.5s infinite ease-in-out;
+}
+
+@keyframes pointRight {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateX(6px);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Flecha indicadora de scroll (Scroll Down Indicator) */
+.scroll-down-indicator {
+    display: inline-block;
+    margin-top: 5px;
+    z-index: 5;
+}
+
+.scroll-down-link {
+    color: var(--accent-color) !important; /* Usar el cian brillante de la marca */
+    font-size: 1.8rem;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    display: inline-block;
+    padding: 5px;
+    filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8));
+}
+
+.scroll-down-link:hover {
+    color: var(--accent-color) !important;
+    opacity: 1;
+}
+
+.bounce-arrow {
+    animation: bounceDown 2s infinite ease-in-out;
+}
+
+@keyframes bounceDown {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(8px);
+    }
+    60% {
+        transform: translateY(4px);
+    }
+}
+
+/* Newsletter Modal Premium Glassmorphism */
+#newsletterModal .modal-dialog {
+    max-width: 440px; /* Más estilizado y vertical para flyers e invitaciones */
+}
+.newsletter-modal-content {
+    background: rgba(10, 16, 30, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 229, 255, 0.25) !important;
+    border-radius: 1.5rem;
+    color: #fff;
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+}
+.newsletter-modal-content .modal-header,
+.newsletter-modal-content .modal-footer {
+    border: none;
+}
+.newsletter-modal-content .form-control {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 0.5rem;
+}
+.newsletter-modal-content .form-control:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    color: #fff;
+}
+.newsletter-modal-img-container {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.newsletter-modal-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Responsividad para el Hero y Carrusel de Fondo en Móviles */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 50vh !important;
+        min-height: 360px !important;
+    }
+    .carousel-item {
+        min-height: 50vh !important;
+    }
+    .hero-content h1.display-2 {
+        font-size: 2.2rem !important;
+        margin-top: 1rem !important;
+    }
+    .hero-content {
+        padding-top: 3rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+}
