@@ -71,9 +71,16 @@ function optimizeCloudinaryUrl(url, brand = '') {
     return url;
   }
 
-  const targetTransform = (brand === 'demos')
-    ? 'w_1080,h_1080,c_fill,g_auto,f_auto,q_auto'
-    : 'w_800,h_600,c_fill,g_auto,f_auto,q_auto';
+  let targetTransform = '';
+  if (brand === 'bg') {
+    targetTransform = 'w_1920,c_limit,f_auto,q_auto';
+  } else if (brand === 'bg_mobile') {
+    targetTransform = 'w_1080,c_limit,f_auto,q_auto';
+  } else if (brand === 'demos') {
+    targetTransform = 'w_1080,h_1080,c_fill,g_auto,f_auto,q_auto';
+  } else {
+    targetTransform = 'w_800,h_600,c_fill,g_auto,f_auto,q_auto';
+  }
 
   const uploadIndex = url.indexOf('/image/upload/');
   const prefix = url.substring(0, uploadIndex + '/image/upload/'.length);
@@ -3034,9 +3041,9 @@ function generateIndexHtml(dbData) {
   const popupImg = optimizeCloudinaryUrl(landing.newsletterPopupImage || '');
   html = html.replace(/\{\{NEWSLETTER_POPUP_IMAGE\}\}/g, popupImg);
 
-  // Dynamic Backgrounds (Cloudinary or local fallback)
-  const bodyBg = optimizeCloudinaryUrl(landing.bodyBg || 'imagenes/fondo_escritorio.png');
-  const bodyBgMobile = optimizeCloudinaryUrl(landing.bodyBgMobile || 'imagenes/fondo_movil.png');
+  // Dynamic Backgrounds (Cloudinary or local fallback sin recorte)
+  const bodyBg = optimizeCloudinaryUrl(landing.bodyBg || 'imagenes/fondo_escritorio.png', 'bg');
+  const bodyBgMobile = optimizeCloudinaryUrl(landing.bodyBgMobile || 'imagenes/fondo_movil.png', 'bg_mobile');
   html = html.replace(/\{\{BODY_BG\}\}/g, bodyBg);
   html = html.replace(/\{\{BODY_BG_MOBILE\}\}/g, bodyBgMobile);
   
@@ -3059,11 +3066,47 @@ function generateIndexHtml(dbData) {
   
   // Brand modules images
   const brandsImages = landing.brandsImages || {};
-  const brandKeys = ['sedanes', 'suvs', 'pickups', 'epower', 'demos'];
+  const brandKeys = ['sedanes', 'suvs', 'pickups', 'epower'];
   brandKeys.forEach(bk => {
     const val = brandsImages[bk] || `imagenes/marca_${bk}.jpg`;
     html = html.replace(new RegExp(`\\{\\{BRAND_IMAGE_${bk.toUpperCase()}\\}\\}`, 'g'), val);
   });
+
+  // Módulo opcional de Autos Demo en portada
+  const showDemosCard = landing.showDemosCard === true;
+  let demosModuleHtml = '';
+  let rowColsClass = 'row-cols-lg-4';
+  let navDemosItem = '';
+
+  if (showDemosCard) {
+    rowColsClass = 'row-cols-lg-3';
+    navDemosItem = '<li class="nav-item"><a class="nav-link fw-bold" href="paginas_promo/promo-demos.html" style="color:#C3002F;">Autos Demo</a></li>';
+    const demosVal = brandsImages['demos'] || `imagenes/marca_demos.jpg`;
+    demosModuleHtml = `
+                <!-- 5. Demos y Seminuevos -->
+                <div class="col">
+                    <a href="paginas_promo/promo-demos.html" class="text-decoration-none" onclick="if(typeof gtag==='function') { gtag('event', 'click_marca_inicio', { 'brand_name': 'DEMOS' }); }">
+                        <div class="brand-module-card">
+                            <img src="${demosVal}" alt="Demos y Seminuevos Nissan" class="brand-module-img">
+                            <div class="model-overlay brand-module-overlay position-absolute bottom-0 start-0 w-100 p-4 d-flex justify-content-between align-items-end">
+                                <div class="w-100 d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h3 class="text-white fw-bold mb-0">Autos Demo</h3>
+                                        <small class="text-white-50">Garantizados · Entrega Inmediata</small>
+                                    </div>
+                                    <span class="btn btn-primary btn-sm px-3 rounded-pill">
+                                        Ingresar <i class="fa-solid fa-arrow-right ms-1"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>`;
+  }
+
+  html = html.replace(/\{\{ROW_COLS_CLASS\}\}/g, rowColsClass);
+  html = html.replace(/\{\{DEMOS_BRAND_MODULE\}\}/g, demosModuleHtml);
+  html = html.replace(/\{\{NAV_DEMOS_ITEM\}\}/g, navDemosItem);
   
   // Reemplazar reglas de Chatbot y avatar en Landing Page
   const rulesPath = path.join(__dirname, 'chatbot_rules.json');

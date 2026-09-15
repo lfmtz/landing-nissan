@@ -41,10 +41,16 @@
         /* Fondo dinámico de la Landing Page */
         body {
             background-image: url('{{BODY_BG}}');
+            background-size: cover !important;
+            background-position: center center !important;
+            background-attachment: fixed !important;
+            background-repeat: no-repeat !important;
         }
         @media (max-width: 768px) {
             body {
                 background-image: url('{{BODY_BG_MOBILE}}');
+                background-size: cover !important;
+                background-position: center center !important;
             }
         }
     </style>
@@ -65,7 +71,7 @@
                     <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#auto-destacado">Oferta Estrella</a></li>
                     <li class="nav-item"><a class="nav-link" href="#modelos">Líneas Nissan</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="paginas_promo/promo-demos.html" style="color:#C3002F;">Autos Demo</a></li>
+                    {{NAV_DEMOS_ITEM}}
                 </ul>
             </div>
         </div>
@@ -203,7 +209,7 @@
                 <div class="heading-line mx-auto"></div>
             </div>
 
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+            <div class="row row-cols-1 row-cols-md-2 {{ROW_COLS_CLASS}} g-4 justify-content-center">
                 <!-- 1. Sedanes -->
                 <div class="col">
                     <a href="paginas_promo/promo-sedanes.html" class="text-decoration-none" onclick="if(typeof gtag==='function') { gtag('event', 'click_marca_inicio', { 'brand_name': 'SEDANES' }); }">
@@ -284,25 +290,7 @@
                     </a>
                 </div>
                 
-                <!-- 5. Demos y Seminuevos -->
-                <div class="col">
-                    <a href="paginas_promo/promo-demos.html" class="text-decoration-none" onclick="if(typeof gtag==='function') { gtag('event', 'click_marca_inicio', { 'brand_name': 'DEMOS' }); }">
-                        <div class="brand-module-card">
-                            <img src="{{BRAND_IMAGE_DEMOS}}" alt="Demos y Seminuevos Nissan" class="brand-module-img">
-                            <div class="model-overlay brand-module-overlay position-absolute bottom-0 start-0 w-100 p-4 d-flex justify-content-between align-items-end">
-                                <div class="w-100 d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h3 class="text-white fw-bold mb-0">Autos Demo</h3>
-                                        <small class="text-white-50">Garantizados · Entrega Inmediata</small>
-                                    </div>
-                                    <span class="btn btn-primary btn-sm px-3 rounded-pill">
-                                        Ingresar <i class="fa-solid fa-arrow-right ms-1"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                {{DEMOS_BRAND_MODULE}}
             </div>
         </div>
     </section>

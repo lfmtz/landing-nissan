@@ -546,9 +546,20 @@
                   <label for="brandImageEpower">e-POWER Electrificados (1080x1080)</label>
                   <input type="url" id="brandImageEpower" class="form-control" style="width:100%; background:#0b1019; color:#fff; border:1px solid #233143; padding:8px; border-radius:4px;">
                 </div>
-                <div class="form-group">
-                  <label for="brandImageDemos">Autos Demo / Seminuevos (1080x1080)</label>
-                  <input type="url" id="brandImageDemos" class="form-control" style="width:100%; background:#0b1019; color:#fff; border:1px solid #233143; padding:8px; border-radius:4px;">
+                <div class="form-group" style="grid-column: span 2; background: rgba(0, 229, 255, 0.05); padding: 14px 16px; border-radius: 8px; border: 1px solid #00e5ff; margin-top: 5px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+                    <label for="brandImageDemos" style="margin: 0; font-weight: bold; color: #00e5ff; font-size: 0.95rem;">
+                      <i class="fa-solid fa-car-side"></i> Autos Demo / Seminuevos (1080x1080)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin: 0; background: #0b1019; padding: 6px 12px; border-radius: 6px; border: 1px solid #233143;">
+                      <input type="checkbox" id="showDemosCard" style="width: 18px; height: 18px; cursor: pointer; accent-color: #00e5ff;">
+                      <span style="color: #fff; font-weight: 600; font-size: 0.88rem;">Mostrar tarjeta en portada</span>
+                    </label>
+                  </div>
+                  <input type="url" id="brandImageDemos" class="form-control" style="width:100%; background:#0b1019; color:#fff; border:1px solid #233143; padding:8px; border-radius:4px;" placeholder="URL de la imagen para la tarjeta de Autos Demo...">
+                  <small style="color: #94a3b8; display: block; margin-top: 6px;">
+                    💡 <em>Opcional: Si aún no tienes autos demo o inventario disponible, desmarca esta casilla y la tarjeta desaparecerá de la portada automáticamente.</em>
+                  </small>
                 </div>
               </div>
             </div>
@@ -2066,6 +2077,7 @@
       document.getElementById('brandImagePickups').value = brandsImages.pickups || '';
       document.getElementById('brandImageEpower').value = brandsImages.epower || '';
       document.getElementById('brandImageDemos').value = brandsImages.demos || '';
+      document.getElementById('showDemosCard').checked = landing.showDemosCard === true;
       document.getElementById('demosTableCsv').value = landing.demosTableCsv || '';
       loadDemosVisualEditor(landing.demosTableCsv || '');
     }
@@ -2124,6 +2136,7 @@
         bodyBg: document.getElementById('bodyBg').value.trim(),
         bodyBgMobile: document.getElementById('bodyBgMobile').value.trim(),
         brandsImages,
+        showDemosCard: document.getElementById('showDemosCard').checked,
         demosTableCsv: document.getElementById('demosTableCsv').value
       };
       
