@@ -45,7 +45,7 @@ body {
     #heroCarousel .carousel-item {
         min-height: 55vh !important;
         background-size: cover !important;
-        background-position: center bottom !important;
+        background-position: center center !important;
     }
     
     .hero-content h1 {
@@ -98,6 +98,8 @@ a, button, .btn {
     height: 100vh;
     min-height: 600px;
     position: relative;
+    background-color: #07101e;
+    overflow: hidden;
     /* Difuminar la parte de abajo para integración suave con la página */
     -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
@@ -105,7 +107,7 @@ a, button, .btn {
 
 .bg-cover {
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
 }
 
@@ -115,8 +117,9 @@ a, button, .btn {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.2) 100%);
     z-index: 1;
+    pointer-events: none;
 }
 
 .hero-content {
@@ -156,10 +159,46 @@ a, button, .btn {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
 }
 
-.carousel-item {
+/* Transición limpia e inmediata entre imágenes en Hero Carousel sin ver el fondo ni logo */
+#heroCarousel {
+    background-color: #07101e;
+    position: relative;
+}
+
+#heroCarousel .carousel-inner {
+    background-color: #07101e;
+    position: relative;
+    height: 100%;
+}
+
+#heroCarousel.carousel-fade .carousel-item {
     min-height: 100vh;
-    transition: transform 1.5s ease-in-out;
-    filter: brightness(1.2); /* Aumento de brillo solicitado */
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    filter: brightness(1.15);
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out !important;
+    transform: none !important;
+}
+
+#heroCarousel.carousel-fade .carousel-item.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* La diapositiva previa se mantiene sólida abajo mientras la nueva aparece directamente encima */
+#heroCarousel.carousel-fade .active.carousel-item-start,
+#heroCarousel.carousel-fade .active.carousel-item-end {
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.35s ease-in-out !important;
+}
+
+#heroCarousel.carousel-fade .carousel-item-next.carousel-item-start,
+#heroCarousel.carousel-fade .carousel-item-prev.carousel-item-end {
+    z-index: 2;
+    opacity: 1;
 }
 
 /* Reglas específicas para el Carrusel de Ofertas en Móviles */

@@ -24,8 +24,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css?v=1.2">
-    <!-- Responsive Carousel Backgrounds -->
     <style>
+        #heroCarousel .carousel-item {
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+        }
+
         #heroCarouselItem1 { background-image: url('{{CAROUSEL_1}}'); }
         #heroCarouselItem2 { background-image: url('{{CAROUSEL_2}}'); }
         #heroCarouselItem3 { background-image: url('{{CAROUSEL_3}}'); }
@@ -80,7 +85,7 @@
     <!-- Hero Section -->
     <header id="hero" class="hero-section position-relative">
         <!-- Carousel -->
-        <div id="heroCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-pause="false">
+        <div id="heroCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-pause="false" data-bs-interval="4500">
             <div class="carousel-inner h-100">
                 <!-- INSTRUCCIONES PARA CAMBIAR IMÁGENES DEL HERO:
                      1. Reemplaza el enlace dentro de `url('...')` por tu propia imagen.

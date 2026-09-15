@@ -72,9 +72,9 @@ function optimizeCloudinaryUrl(url, brand = '') {
   }
 
   let targetTransform = '';
-  if (brand === 'bg') {
+  if (brand === 'bg' || brand === 'carousel') {
     targetTransform = 'w_1920,c_limit,f_auto,q_auto';
-  } else if (brand === 'bg_mobile') {
+  } else if (brand === 'bg_mobile' || brand === 'carousel_mobile') {
     targetTransform = 'w_1080,c_limit,f_auto,q_auto';
   } else if (brand === 'demos') {
     targetTransform = 'w_1080,h_1080,c_fill,g_auto,f_auto,q_auto';
@@ -3031,8 +3031,8 @@ function generateIndexHtml(dbData) {
   const carousel = landing.carousel || [];
   const carouselMobile = landing.carouselMobile || [];
   for (let i = 0; i < 4; i++) {
-    const val = optimizeCloudinaryUrl(carousel[i] || `imagenes/carrusel_${i + 1}.jpg`);
-    const valMobile = optimizeCloudinaryUrl(carouselMobile[i] || val); // Fallback to desktop if mobile is empty
+    const val = optimizeCloudinaryUrl(carousel[i] || `imagenes/carrusel_${i + 1}.jpg`, 'carousel');
+    const valMobile = optimizeCloudinaryUrl(carouselMobile[i] || val, 'carousel_mobile'); // Fallback to desktop if mobile is empty
     html = html.replace(new RegExp(`\\{\\{CAROUSEL_${i + 1}\\}\\}`, 'g'), val);
     html = html.replace(new RegExp(`\\{\\{CAROUSEL_${i + 1}_MOBILE\\}\\}`, 'g'), valMobile);
   }
