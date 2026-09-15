@@ -64,25 +64,37 @@ function writeData(data) {
 // Optimize Cloudinary URLs helper
 function optimizeCloudinaryUrl(url, brand = '') {
   if (!url || typeof url !== 'string') return url;
-  if (url.includes('cloudinary.com')) {
-    if (!url.includes('/w_') && !url.includes('/h_') && !url.includes('/c_')) {
-      if (brand === 'demos') {
-        return url.replace(/(image\/upload\/)(v\d+)/, '$1w_1080,h_1080,c_fill,g_auto,f_auto,q_auto/$2');
-      } else {
-        return url.replace(/(image\/upload\/)(v\d+)/, '$1w_800,h_600,c_fill,g_auto,f_auto,q_auto/$2');
-      }
+  if (!url.includes('cloudinary.com') || !url.includes('/image/upload/')) return url;
+
+  // Si ya tiene un recorte manual con Cropper.js, preservarlo
+  if (url.includes(',c_crop') || url.includes('c_crop,')) {
+    return url;
+  }
+
+  const targetTransform = (brand === 'demos')
+    ? 'w_1080,h_1080,c_fill,g_auto,f_auto,q_auto'
+    : 'w_800,h_600,c_fill,g_auto,f_auto,q_auto';
+
+  const uploadIndex = url.indexOf('/image/upload/');
+  const prefix = url.substring(0, uploadIndex + '/image/upload/'.length);
+  const rest = url.substring(uploadIndex + '/image/upload/'.length);
+
+  const segments = rest.split('/');
+  let publicPath = '';
+
+  const vIndex = segments.findIndex(s => s.match(/^v\d+$/));
+  if (vIndex !== -1) {
+    publicPath = segments.slice(vIndex).join('/');
+  } else {
+    const isTransform = segments[0].includes(',') || segments[0].includes('_') || segments[0].startsWith('c_') || segments[0].startsWith('w_');
+    if (isTransform && segments.length > 1) {
+      publicPath = segments.slice(1).join('/');
     } else {
-      if (!url.includes('f_auto') || !url.includes('q_auto')) {
-        return url.replace(/(image\/upload\/)([^/]+)\/(v\d+)/, (match, p1, p2, p3) => {
-          let opts = p2;
-          if (!opts.includes('f_auto')) opts += ',f_auto';
-          if (!opts.includes('q_auto')) opts += ',q_auto';
-          return p1 + opts + '/' + p3;
-        });
-      }
+      publicPath = rest;
     }
   }
-  return url;
+
+  return `${prefix}${targetTransform}/${publicPath}`;
 }
 
 // Parse CSV text respecting quoted fields (RFC 4180 compliant)
@@ -174,14 +186,16 @@ app.post('/api/promos/:brand', upload.fields([{ name: 'image', maxCount: 1 }, { 
 
   // Prioritize cover image (imgPath) as the first item of finalImages
   if (imgPath) {
+    imgPath = optimizeCloudinaryUrl(imgPath, brand);
     const existingIndex = finalImages.indexOf(imgPath);
     if (existingIndex > -1) {
       finalImages.splice(existingIndex, 1);
     }
     finalImages.unshift(imgPath);
   } else if (finalImages.length > 0) {
-    imgPath = finalImages[0];
+    imgPath = optimizeCloudinaryUrl(finalImages[0], brand);
   }
+  finalImages = finalImages.map(img => optimizeCloudinaryUrl(img, brand));
 
   const newPromo = {
     id: req.body.id || `${brand}-${Date.now()}`,

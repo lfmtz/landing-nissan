@@ -1091,8 +1091,41 @@
   
 
   
+  <!-- Divider Banner informing client about the full text inventory below -->
+  <div class="inventory-indicator-banner" style="max-width: 960px; margin: 40px auto 10px auto; padding: 0 10px;">
+    <div style="background: linear-gradient(135deg, #111 0%, #222 100%); color: #fff; padding: 20px; border-radius: 8px; border-left: 6px solid var(--acento); box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+      <div style="flex: 1; min-width: 280px;">
+        <h4 style="margin: 0; font-family: var(--fuente); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--acento); display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-circle-info"></i> ¿No encontraste tu foto o modelo?
+        </h4>
+        <p style="margin: 5px 0 0 0; font-family: var(--fuente); font-size: 1.05rem; color: #ccc;">
+          👉 Tenemos más unidades de autos demo en liquidación. Desliza hacia abajo para consultar el **Inventario de Texto Completo**.
+        </p>
+      </div>
+      <div style="font-family: var(--fuente); font-size: 1.8rem; font-weight: bold; color: var(--acento); display: flex; align-items: center; animation: bounce 2s infinite;">
+        <i class="fa-solid fa-arrow-down-long"></i>
+      </div>
+    </div>
+  </div>
+  
 
   
+        <div class="excel-table-container">
+          <div class="table-header-actions" style="margin-bottom: 25px;">
+            <div>
+              <h3 class="table-title" style="margin-bottom: 5px;"><i class="fa-solid fa-list-check"></i> Inventario de Autos Demo</h3>
+              <p style="color: #666; font-size: 0.95rem; margin: 0;">Si buscas otro modelo o color, consulta nuestro listado por marca a continuación:</p>
+            </div>
+            <div class="table-search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="demoTableSearch" placeholder="Buscar unidad..." onkeyup="filterDemoTable()">
+            </div>
+          </div>
+          <div class="accordions-container">
+            
+          </div>
+        </div>
+        
   <div class="embed-footer"></div>
 
   <!-- Popup de Arrendamiento (Vanilla CSS/JS Ligero) -->

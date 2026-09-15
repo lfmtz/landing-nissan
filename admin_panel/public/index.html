@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Stellantis | Editor de Promociones</title>
+  <title>Admin Nissan | Editor de Promociones</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -753,9 +753,9 @@
         </div>
 
         <div class="form-group">
-          <label for="imageURL">URL de la Imagen (Cloudinary / Externa) (800x600 o PNG Transparente)</label>
+          <label for="imageURL">URL de la Imagen (Cloudinary / Externa) <span style="color: #00e5ff; font-weight: normal; font-size: 0.85rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> Ajuste y resolución automáticos</span></label>
           <div style="display: flex; gap: 10px; width: 100%;">
-            <input type="url" id="imageURL" placeholder="Ej. https://res.cloudinary.com/... (Si usas Cloudinary, pega el link aquí)" style="flex: 1; margin-bottom: 0;">
+            <input type="url" id="imageURL" placeholder="Ej. https://res.cloudinary.com/... (Se ajusta automáticamente a la tarjeta)" style="flex: 1; margin-bottom: 0;">
             <button type="button" id="cropImageBtn" class="btn btn-secondary" style="display: none; padding: 0 15px; border-radius: 4px; height: 38px; align-items: center; justify-content: center; gap: 5px; flex-shrink: 0;"><i class="fa-solid fa-crop"></i> Encuadrar</button>
           </div>
         </div>
@@ -946,21 +946,21 @@
           Selecciona los vehículos que deseas exportar a tu archivo de Excel:
         </p>
         <div style="display: flex; flex-direction: column; gap: 12px;">
-          <a href="/api/download-csv?filter=nuevos" download="precios_stellantis_nuevos.csv" class="download-option-link" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #1e293b; color: #fff; border: 1px solid #334155; border-radius: 8px; transition: all 0.2s;">
+          <a href="/api/download-csv?filter=nuevos" download="precios_nissan_nuevos.csv" class="download-option-link" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #1e293b; color: #fff; border: 1px solid #334155; border-radius: 8px; transition: all 0.2s;">
             <div>
               <div style="font-weight: 700; font-size: 1rem; color: #38bdf8;">🚗 Solo Autos Nuevos (0 KM)</div>
-              <small style="color: #94a3b8;">RAM, Dodge, Jeep, Fiat, Peugeot, Leapmotor</small>
+              <small style="color: #94a3b8;">Sedanes, SUVs, Pickups, e-POWER</small>
             </div>
             <i class="fa-solid fa-cloud-arrow-down" style="font-size: 1.3rem; color: #38bdf8;"></i>
           </a>
-          <a href="/api/download-csv?filter=demos" download="precios_stellantis_demos.csv" class="download-option-link" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #1e293b; color: #fff; border: 1px solid #334155; border-radius: 8px; transition: all 0.2s;">
+          <a href="/api/download-csv?filter=demos" download="precios_nissan_demos.csv" class="download-option-link" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #1e293b; color: #fff; border: 1px solid #334155; border-radius: 8px; transition: all 0.2s;">
             <div>
               <div style="font-weight: 700; font-size: 1rem; color: #00e5ff;">🏷️ Solo Autos Demo</div>
               <small style="color: #94a3b8;">Unidades de liquidación y exhibición</small>
             </div>
             <i class="fa-solid fa-cloud-arrow-down" style="font-size: 1.3rem; color: #00e5ff;"></i>
           </a>
-          <a href="/api/download-csv?filter=ambos" download="precios_stellantis_todos.csv" class="download-option-link" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #0284c7; color: #fff; border: 1px solid #0369a1; border-radius: 8px; transition: all 0.2s;">
+          <a href="/api/download-csv?filter=ambos" download="precios_nissan_todos.csv" class="download-option-link" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #0284c7; color: #fff; border: 1px solid #0369a1; border-radius: 8px; transition: all 0.2s;">
             <div>
               <div style="font-weight: 700; font-size: 1rem; color: #ffffff;">📋 Ambos (Todos los Vehículos)</div>
               <small style="color: #e0f2fe;">Incluye columna "Tipo" (NUEVO / DEMO) para filtrar</small>
@@ -1103,16 +1103,62 @@
     const applyCropBtn = document.getElementById('applyCropBtn');
     let cropperInstance = null;
 
+    function optimizeCloudinaryUrlClient(url, brand) {
+      if (!url || typeof url !== 'string') return url;
+      if (!url.includes('cloudinary.com') || !url.includes('/image/upload/')) return url;
+
+      if (url.includes(',c_crop') || url.includes('c_crop,')) {
+        return url;
+      }
+
+      const targetTransform = (brand === 'demos')
+        ? 'w_1080,h_1080,c_fill,g_auto,f_auto,q_auto'
+        : 'w_800,h_600,c_fill,g_auto,f_auto,q_auto';
+
+      const uploadIndex = url.indexOf('/image/upload/');
+      const prefix = url.substring(0, uploadIndex + '/image/upload/'.length);
+      const rest = url.substring(uploadIndex + '/image/upload/'.length);
+
+      const segments = rest.split('/');
+      let publicPath = '';
+
+      const vIndex = segments.findIndex(s => s.match(/^v\d+$/));
+      if (vIndex !== -1) {
+        publicPath = segments.slice(vIndex).join('/');
+      } else {
+        const isTransform = segments[0].includes(',') || segments[0].includes('_') || segments[0].startsWith('c_') || segments[0].startsWith('w_');
+        if (isTransform && segments.length > 1) {
+          publicPath = segments.slice(1).join('/');
+        } else {
+          publicPath = rest;
+        }
+      }
+
+      return `${prefix}${targetTransform}/${publicPath}`;
+    }
+
     function checkCloudinaryBtn() {
       const isCloudinary = imageURLInput.value.includes('cloudinary.com');
       cropImageBtn.style.display = isCloudinary ? 'inline-flex' : 'none';
     }
 
-    function handleCoverUrlChange() {
+    function handleCoverUrlChange(isUserAction = false) {
       checkCloudinaryBtn();
-      const val = imageURLInput.value.trim();
+      let val = imageURLInput.value.trim();
       if (val && (val.startsWith('http://') || val.startsWith('https://'))) {
-        filePreview.innerHTML = `<img src="${val}" class="preview-img"><p class="preview-text" style="color: #00e5ff; font-weight: bold;">⭐ Portada (Link)</p>`;
+        const brand = document.getElementById('promoBrand').value || currentBrand;
+        const optimized = optimizeCloudinaryUrlClient(val, brand);
+        if (optimized !== val && isUserAction) {
+          val = optimized;
+          imageURLInput.value = optimized;
+        }
+
+        const isCloudinary = val.includes('cloudinary.com');
+        const badgeMsg = isCloudinary
+          ? `⭐ Portada Cloudinary (Ajuste automático a ${brand === 'demos' ? '1080x1080' : '800x600'} activado)`
+          : `⭐ Portada (Ajuste automático de escala y centrado en tarjeta)`;
+
+        filePreview.innerHTML = `<img src="${val}" class="preview-img"><p class="preview-text" style="color: #00e5ff; font-weight: bold;"><i class="fa-solid fa-wand-magic-sparkles"></i> ${badgeMsg}</p>`;
         
         // Sync with gallery: ensure val is at index 0 of currentPromoImages
         const existingIdx = currentPromoImages.findIndex(img => typeof img === 'string' && img === val);
@@ -1125,8 +1171,11 @@
         renderMultiImages();
       }
     }
-    imageURLInput.addEventListener('input', handleCoverUrlChange);
-    imageURLInput.addEventListener('change', handleCoverUrlChange);
+    imageURLInput.addEventListener('paste', () => {
+      setTimeout(() => handleCoverUrlChange(true), 50);
+    });
+    imageURLInput.addEventListener('change', () => handleCoverUrlChange(true));
+    imageURLInput.addEventListener('input', () => handleCoverUrlChange(false));
 
     // Multiple Images Gallery Support
     let currentPromoImages = [];
@@ -1135,8 +1184,10 @@
 
     window.addMultiImageURL = function() {
       const input = document.getElementById('multiImageURLInput');
-      const url = input.value.trim();
+      let url = input.value.trim();
       if (url) {
+        const brand = document.getElementById('promoBrand').value || currentBrand;
+        url = optimizeCloudinaryUrlClient(url, brand);
         currentPromoImages.push(url);
         input.value = '';
         renderMultiImages();
@@ -1630,7 +1681,7 @@
                 <button type="button" class="btn btn-sm" onclick="copyCarPublicLink('${currentBrand}', '${p.id}', '${(p.name || '').replace(/'/g, "\\'")}', this)" style="flex: 1; background: #00e5ff; color: #0b1019; font-weight: 700; border: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 10px; border-radius: 4px; font-size: 0.82rem; cursor: pointer; transition: all 0.2s;" title="Copiar enlace directo para enviar al cliente">
                   <i class="fa-solid fa-link"></i> Copiar Link Cliente
                 </button>
-                <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('¡Hola! Te comparto la información y promoción de ' + p.name + ': https://lfmtz.github.io/landing-stellantis/paginas_promo/promo-' + currentBrand + '.html#auto-' + p.id)}" target="_blank" rel="noopener" class="btn btn-sm" style="background: #25d366; color: #fff; border: none; padding: 7px 11px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;" title="Enviar directamente por WhatsApp">
+                <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('¡Hola! Te comparto la información y promoción de ' + p.name + ': https://lfmtz.github.io/landing-nissan/paginas_promo/promo-' + currentBrand + '.html#auto-' + p.id)}" target="_blank" rel="noopener" class="btn btn-sm" style="background: #25d366; color: #fff; border: none; padding: 7px 11px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;" title="Enviar directamente por WhatsApp">
                   <i class="fa-brands fa-whatsapp" style="font-size: 1.05rem;"></i>
                 </a>
                 <button type="button" class="btn btn-sm" onclick="openCarPublicLink('${currentBrand}', '${p.id}')" style="background: #1e293b; color: #94a3b8; border: 1px solid #334155; padding: 7px 10px; border-radius: 4px; cursor: pointer;" title="Ver cómo lo ve el cliente en la página web">
@@ -1811,7 +1862,7 @@
       const container = document.getElementById('portalButtonsList');
       container.innerHTML = '';
       const buttons = portal.buttons || [
-        { text: 'Nuevos y Autos Demo', url: 'https://lfmtz.github.io/landing-stellantis/', color: '#00e5ff', icon: 'fa-solid fa-car' },
+        { text: 'Nuevos y Autos Demo', url: 'https://lfmtz.github.io/landing-nissan/', color: '#00e5ff', icon: 'fa-solid fa-car' },
         { text: 'Autos Seminuevos', url: 'https://lfmtz.github.io/catalogo-seminuevos/', color: '#ffffff', icon: 'fa-solid fa-car' }
       ];
       buttons.forEach(btn => {
@@ -2315,7 +2366,7 @@
       const openBtn = document.getElementById('promoDirectLinkOpenBtn');
       const waBtn = document.getElementById('promoDirectLinkWaBtn');
       if (shareBox && linkInput) {
-        const publicUrl = `https://lfmtz.github.io/landing-stellantis/paginas_promo/promo-${currentBrand}.html#auto-${p.id}`;
+        const publicUrl = `https://lfmtz.github.io/landing-nissan/paginas_promo/promo-${currentBrand}.html#auto-${p.id}`;
         linkInput.value = publicUrl;
         if (openBtn) openBtn.href = publicUrl;
         if (waBtn) waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent('¡Hola! Te comparto la información y promoción de ' + p.name + ': ' + publicUrl)}`;
@@ -2482,20 +2533,18 @@
       let targetBrands = [];
       const brandLabels = {
         demos: 'Autos Demo',
-        ram: 'RAM (Nuevos)',
-        dodge: 'DODGE (Nuevos)',
-        jeep: 'JEEP (Nuevos)',
-        fiat: 'FIAT (Nuevos)',
-        peugeot: 'PEUGEOT (Nuevos)',
-        leapmotor: 'LEAPMOTOR (Nuevos)'
+        sedanes: 'Sedanes Nissan',
+        suvs: 'SUVs Nissan',
+        pickups: 'Pickups Nissan',
+        epower: 'e-POWER Nissan'
       };
 
       if (currentCopySourceFilter === 'demos') {
         targetBrands = ['demos'];
       } else if (currentCopySourceFilter === 'nuevos') {
-        targetBrands = ['ram', 'dodge', 'jeep', 'fiat', 'peugeot', 'leapmotor'];
+        targetBrands = ['sedanes', 'suvs', 'pickups', 'epower'];
       } else {
-        targetBrands = ['demos', 'ram', 'dodge', 'jeep', 'fiat', 'peugeot', 'leapmotor'];
+        targetBrands = ['demos', 'sedanes', 'suvs', 'pickups', 'epower'];
       }
 
       let countFound = 0;
@@ -2658,7 +2707,7 @@
 
     // Helper functions for copying and opening public car links for clients
     window.copyCarPublicLink = function(brand, id, carName, btnEl) {
-      const url = `https://lfmtz.github.io/landing-stellantis/paginas_promo/promo-${brand}.html#auto-${id}`;
+      const url = `https://lfmtz.github.io/landing-nissan/paginas_promo/promo-${brand}.html#auto-${id}`;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(url).then(() => {
           if (btnEl) {
@@ -2682,7 +2731,7 @@
     };
 
     window.openCarPublicLink = function(brand, id) {
-      const url = `https://lfmtz.github.io/landing-stellantis/paginas_promo/promo-${brand}.html#auto-${id}`;
+      const url = `https://lfmtz.github.io/landing-nissan/paginas_promo/promo-${brand}.html#auto-${id}`;
       window.open(url, '_blank');
     };
 
