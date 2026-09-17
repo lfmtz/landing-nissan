@@ -10,57 +10,10 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--dark-bg);
-    
-    /* Fondo base (escritorio por defecto) */
-    background-image: url('../imagenes/fondo_escritorio.png');
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    
+    position: relative;
     color: #fff;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23C3002F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>') 12 12, auto;
     overflow-x: hidden;
-}
-
-/* Regla para teléfonos móviles */
-@media (max-width: 768px) {
-    body {
-        background-image: url('../imagenes/fondo_movil.png');
-        /* Para intentar esconder el menú hamburguesa desde el código, movemos la imagen un poco hacia arriba */
-        background-position: center -60px; 
-    }
-    
-    /* Ajustes para el Carrusel Principal (Hero) en Móviles */
-    .hero-section {
-        height: 55vh !important;
-        min-height: 400px !important;
-    }
-    
-    .hero-content {
-        padding-top: 4.5rem !important; /* Más espacio arriba en móvil para bajar el contenido */
-        padding-bottom: 10px !important;
-    }
-    
-    #heroCarousel .carousel-item {
-        min-height: 55vh !important;
-        background-size: cover !important;
-        background-position: center center !important;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem !important;
-    }
-    
-    .hero-content p {
-        font-size: 1rem !important;
-    }
-
-    .hero-content .btn-glow {
-        padding: 8px 18px !important;
-        font-size: 0.75rem !important;
-        margin-top: 0.5rem !important;
-    }
 }
 
 /* Links also get custom cursor */
@@ -100,9 +53,6 @@ a, button, .btn {
     position: relative;
     background-color: #07101e;
     overflow: hidden;
-    /* Difuminar la parte de abajo para integración suave con la página */
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 
 .bg-cover {
@@ -507,18 +457,24 @@ a, button, .btn {
 /* Responsividad para el Hero y Carrusel de Fondo en Móviles */
 @media (max-width: 768px) {
     .hero-section {
-        height: 50vh !important;
-        min-height: 360px !important;
+        height: 85vh !important;
+        height: 85dvh !important;
+        min-height: 520px !important;
     }
-    .carousel-item {
-        min-height: 50vh !important;
+    #heroCarousel .carousel-item {
+        min-height: 85vh !important;
+        min-height: 85dvh !important;
     }
     .hero-content h1.display-2 {
         font-size: 2.2rem !important;
         margin-top: 1rem !important;
     }
     .hero-content {
-        padding-top: 3rem !important;
+        padding-top: 3.5rem !important;
         padding-bottom: 0.5rem !important;
+    }
+    .hero-content .btn-glow {
+        padding: 10px 22px !important;
+        font-size: 0.85rem !important;
     }
 }

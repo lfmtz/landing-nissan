@@ -43,19 +43,39 @@
             #heroCarouselItem4 { background-image: url('https://res.cloudinary.com/x15obxmg/image/upload/w_1080,c_limit,f_auto,q_auto/v1789499198/carrusel_e-power_v.jpg'); }
         }
 
-        /* Fondo dinámico de la Landing Page */
+        /* Fondo dinámico de la Landing Page (Capa fija acelerada por hardware, sin saltos ni redimensionamientos) */
         body {
-            background-image: url('https://res.cloudinary.com/x15obxmg/image/upload/w_1920,c_limit,f_auto,q_auto/v1789496274/fondo_escritorio.png');
-            background-size: cover !important;
-            background-position: center center !important;
-            background-attachment: fixed !important;
-            background-repeat: no-repeat !important;
+            background-image: none !important;
+            background-attachment: scroll !important;
+            position: relative;
         }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background-image: url('https://res.cloudinary.com/x15obxmg/image/upload/w_1920,c_limit,f_auto,q_auto/v1789496274/fondo_escritorio.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -2;
+            pointer-events: none;
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
+            will-change: transform;
+        }
+
         @media (max-width: 768px) {
-            body {
+            body::before {
                 background-image: url('https://res.cloudinary.com/x15obxmg/image/upload/w_1080,c_limit,f_auto,q_auto/v1789496273/fondo_cel.png');
-                background-size: cover !important;
-                background-position: center center !important;
+                background-size: cover;
+                background-position: center center;
             }
         }
     </style>

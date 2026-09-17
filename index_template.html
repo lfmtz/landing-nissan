@@ -43,19 +43,39 @@
             #heroCarouselItem4 { background-image: url('{{CAROUSEL_4_MOBILE}}'); }
         }
 
-        /* Fondo dinámico de la Landing Page */
+        /* Fondo dinámico de la Landing Page (Capa fija acelerada por hardware, sin saltos ni redimensionamientos) */
         body {
-            background-image: url('{{BODY_BG}}');
-            background-size: cover !important;
-            background-position: center center !important;
-            background-attachment: fixed !important;
-            background-repeat: no-repeat !important;
+            background-image: none !important;
+            background-attachment: scroll !important;
+            position: relative;
         }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background-image: url('{{BODY_BG}}');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -2;
+            pointer-events: none;
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
+            will-change: transform;
+        }
+
         @media (max-width: 768px) {
-            body {
+            body::before {
                 background-image: url('{{BODY_BG_MOBILE}}');
-                background-size: cover !important;
-                background-position: center center !important;
+                background-size: cover;
+                background-position: center center;
             }
         }
     </style>
