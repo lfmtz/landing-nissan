@@ -110,69 +110,135 @@
   "suvs": [
     {
       "id": "nissan-kicks",
-      "name": "Nissan Kicks 2025",
-      "price": "Desde ,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/kicks_nissan.png",
+      "name": "Kicks 2026",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $562,900",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601014/new_kicks.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601014/new_kicks.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20Nissan%20Kicks",
-      "description": "Diseño audaz, conectividad total y sistema de audio Bose Personal Plus en cabecera del conductor. La SUV crossover que redefine tus trayectos urbanos.",
+      "description": "Diseño audaz, conectividad total y sistema de audio Bose Personal Plus en cabecera del conductor. La SUV crossover que redefine tus trayectos urbanos.\r\nMensualidades desde <span style=\"color: red; font-weight: bold;\"><b>$8,399*</b></span> aplica para versión Exclusive.\r\n",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Bono de hasta ,000",
-        "0% comisión por apertura",
-        "Mensualidades desde ,990"
+        "Ó tasa del 7.68%",
+        "Bonos hasta de $87,000*"
       ],
+      "fichaTecnica": "",
       "legal": "* Consulta versiones aplicables. Sujeto a aprobación de crédito.",
-      "accentColor": "#C3002F",
+      "accentColor": "#c3002f",
       "underlineStyle": "solid",
       "category": "suv",
-      "promoMes": "BONO DE HASTA ,000",
+      "promoMes": "",
       "promoMesTag": "⭐ FAVORITA URBANA",
-      "promoMesIcon": "🌟"
+      "promoMesIcon": "💳"
     },
     {
       "id": "nissan-xtrail",
-      "name": "Nissan X-Trail 2025",
-      "price": "Desde ,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/xtrail_nissan.png",
+      "name": "X-Trail 2027",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $615,900",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601001/xtrail_gasolina.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601001/xtrail_gasolina.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20la%20Nissan%20X-Trail",
-      "description": "Espacio, comodidad y versatilidad inigualable con opciones de 2 o 3 filas de asientos. Techo panorámico, cajuela eléctrica inteligente y máximo confort familiar.",
+      "description": "Espacio, comodidad y versatilidad inigualable. Techo panorámico, cajuela eléctrica inteligente y máximo confort familiar.\r\nMensualidades desde <span style=\"color: red; font-weight: bold;\"><b>$11,899*</b></span>",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Bono de hasta ,000",
-        "1 año de seguro gratis",
-        "0% comisión por apertura"
+        "Bono de hasta $66,000"
       ],
-      "legal": "* Sujeto a disponibilidad de inventario.",
-      "accentColor": "#C3002F",
+      "fichaTecnica": "",
+      "legal": "* Sujeto a disponibilidad de inventario.Consulte con su asesor de ventas las condiciones",
+      "accentColor": "#c3002f",
       "underlineStyle": "solid",
       "category": "suv",
-      "promoMes": "HASTA 24 MESES SIN INTERESES",
+      "promoMes": "HASTA 24 MESES SIN INTERESES + 1 año de seguro gratis",
       "promoMesTag": "🔥 DESTACADA FAMILIAR",
-      "promoMesIcon": "👨‍👩‍👧‍👦"
+      "promoMesIcon": "🔥"
     },
     {
       "id": "nissan-pathfinder",
-      "name": "Nissan Pathfinder 2025",
-      "price": "Desde ,189,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/pathfinder_nissan.png",
+      "name": "Pathfinder 2026",
+      "km": "",
+      "listPrice": "",
+      "price": "$1,199,990",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601000/pathfinder.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601000/pathfinder.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20la%20Nissan%20Pathfinder",
-      "description": "Potencia formidable con motor V6 de 270 hp, transmisión automática de 9 velocidades y selector de 7 modos de manejo y terreno.",
+      "description": "Lujo imponente, tres filas de asientos y la máxima seguridad para tus viajes familiares. ¡Estrena tu Pathfinder con atractivos planes de financiamiento o arrendamiento!",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Bono exclusivo de agencia hasta ,000",
-        "Tasa preferencial especial",
-        "Garantía total de tren motriz"
+        "Tasa desde el 14.99%",
+        "Ó 1 año de seguro gratis"
       ],
-      "legal": "* Consulta equipamiento y ficha técnica con tu asesor certificado.",
-      "accentColor": "#111111",
+      "fichaTecnica": "",
+      "legal": "* Consulta equipamiento y ficha técnica con tu asesor certificado.Aplica terminos y condiciones",
+      "accentColor": "#f50000",
       "underlineStyle": "solid",
       "category": "suv",
-      "promoMes": "BONO DE HASTA ,000",
+      "promoMes": "",
       "promoMesTag": "👑 MÁXIMO PODER V6",
-      "promoMesIcon": "⛰️"
+      "promoMesIcon": "💳"
+    },
+    {
+      "id": "suvs-1789607607428",
+      "name": "Magnite 2026",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $388,990",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601012/magnite.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601012/magnite.jpg"
+      ],
+      "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20Magnite%202026",
+      "description": "La SUV compacta con estilo audaz, excelente rendimiento de combustible y tecnología avanzada. ¡Cotiza hoy tu Magnite con mensualidades accesibles!\r\nMensualidades desde <span style=\"color: red; font-weight: bold;\"><b>$5,999*</b></span>",
+      "descriptionSize": "1.0rem",
+      "descriptionColor": "#333333",
+      "benefits": [
+        "Bonos hasta de $58,000"
+      ],
+      "fichaTecnica": "",
+      "legal": "* Promoción válida el mes en curso. Sujeta a cambios sin previo aviso con Credi Nissan.",
+      "accentColor": "#ff0000",
+      "underlineStyle": "solid",
+      "category": "suv",
+      "promoMes": "",
+      "promoMesTag": "",
+      "promoMesIcon": "💳"
+    },
+    {
+      "id": "suvs-1789607902972",
+      "name": "Kait 2027",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $479,900",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601013/kait.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601013/kait.jpg"
+      ],
+      "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20Kait%202027",
+      "description": "Estilo vanguardista, conectividad inteligente y la mejor eficiencia para tu ritmo urbano. ¡Estrena tu nueva Nissan Kait con financiamiento a tu medida!\r\nMensualidades desde <span style=\"color: red; font-weight: bold;\"><b>$6,299*</b></span>",
+      "descriptionSize": "1.0rem",
+      "descriptionColor": "#333333",
+      "benefits": [
+        "Bonos hasta de $39,910"
+      ],
+      "fichaTecnica": "",
+      "legal": "* Promoción válida el mes en curso. Sujeta a cambios sin previo aviso con Credi Nissan.",
+      "accentColor": "#ff0000",
+      "underlineStyle": "solid",
+      "category": "suv",
+      "promoMes": "",
+      "promoMesTag": "",
+      "promoMesIcon": "💳"
     }
   ],
   "pickups": [
