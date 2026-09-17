@@ -1078,8 +1078,11 @@
   <div id="leasingPopup" class="leasing-popup-overlay" style="display: none;" onclick="closeLeasingPopupOverlay(event)">
     <div class="leasing-popup-content" onclick="event.stopPropagation()">
       <button class="leasing-popup-close" id="closeLeasingPopup" onclick="closeLeasingPopupOverlay(event)" aria-label="Cerrar">&times;</button>
-      <a href="https://wa.me/525521787900?text=Hola,%20solicito%20información%20sobre%20el%20arrendamiento" target="_blank" id="leasingPopupLink" onclick="if(typeof gtag==='function') { gtag('event', 'click_whatsapp_leasing', { 'brand_name': 'epower' }); }">
+      <a href="https://wa.me/525521787900?text=Hola,%20solicito%20informaci%C3%B3n%20sobre%20el%20arrendamiento" target="_blank" id="leasingPopupLink" style="text-decoration: none; display: flex; flex-direction: column; width: 100%;" onclick="if(typeof gtag==='function') { gtag('event', 'click_whatsapp_leasing', { 'brand_name': 'epower' }); }">
         <img src="https://res.cloudinary.com/x15obxmg/image/upload/w_1200,c_limit,f_auto,q_auto/v1789612521/popuparrendamiento.jpg" class="leasing-popup-img" alt="Promoción Especial Arrendamiento" onerror="this.onerror=null; this.src='../imagenes/carrusel_1.jpg';">
+        <div style="background: #25d366; color: #fff; text-align: center; padding: 13px 18px; font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--fuente); text-transform: uppercase; letter-spacing: 0.5px; border-top: 1px solid rgba(255,255,255,0.25);">
+          <i class="fa-brands fa-whatsapp" style="font-size: 1.35rem;"></i> Cotizar Arrendamiento por WhatsApp
+        </div>
       </a>
     </div>
   </div>
@@ -1616,7 +1619,7 @@
         setTimeout(openChat, 4000);
       }
 
-      function appendMessage(text, isBot, cards) {
+      function appendMessage(text, isBot, cards, waBtnData) {
         var msg = document.createElement("div");
         msg.className = "chat-message " + (isBot ? "bot-message" : "user-message");
         
@@ -1624,6 +1627,22 @@
         content.className = "message-content";
         content.innerText = text;
         msg.appendChild(content);
+        
+        if (waBtnData) {
+          var waActionBtn = document.createElement("a");
+          waActionBtn.href = waBtnData.url || ("https://wa.me/525521787900?text=" + encodeURIComponent(waBtnData.text || "Hola Luis Fernando Martínez, solicito más información."));
+          waActionBtn.target = "_blank";
+          waActionBtn.rel = "noopener";
+          waActionBtn.className = "chat-wa-direct-btn";
+          waActionBtn.style.cssText = "background: #25d366; color: #fff; text-decoration: none; padding: 10px 18px; border-radius: 25px; font-weight: bold; font-size: 0.92rem; display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; box-shadow: 0 4px 12px rgba(37,211,102,0.35);";
+          waActionBtn.innerHTML = '<i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i> ' + (waBtnData.label || 'Pedir más información por WhatsApp');
+          waActionBtn.onclick = function() {
+            if (typeof gtag === 'function') {
+              gtag('event', 'click_whatsapp_chatbot', { 'query_type': waBtnData.type || 'chatbot_help' });
+            }
+          };
+          msg.appendChild(waActionBtn);
+        }
         
         if (cards && cards.length > 0) {
           cards.forEach(function(c) {
@@ -1799,20 +1818,25 @@
               appendMessage(opt.reply, true);
             }
           } else if (opt.reply) {
-            appendMessage(opt.reply, true);
-            
             var optLabel = opt.label.toLowerCase();
-            var waText = "Hola Luis Fernando Martínez, solicito información.";
+            var waText = "Hola Luis Fernando Martínez, solicito más información.";
             
             if (optLabel.includes("crédito") || optLabel.includes("credito")) {
-              waText = "quiero informacion de credito";
+              waText = "Hola Luis Fernando Martínez, solicito requisitos y cotización de crédito.";
             } else if (optLabel.includes("arrendamiento") || optLabel.includes("leasing")) {
-              waText = "quiero informacion de arrendamiento";
+              waText = "Hola Luis Fernando Martínez, solicito cotización e información sobre arrendamiento.";
             } else if (optLabel.includes("ubic") || optLabel.includes("dónde") || optLabel.includes("donde")) {
-              waText = "quiero agendar una cita";
+              waText = "Hola Luis Fernando Martínez, quiero agendar una visita a la agencia.";
             } else if (optLabel.includes("manejo") || optLabel.includes("prueba")) {
-              waText = "quiero agendar una prueba de manejo";
+              waText = "Hola Luis Fernando Martínez, quiero agendar una prueba de manejo.";
             }
+            var optWaUrl = "https://wa.me/525521787900?text=" + encodeURIComponent(waText);
+
+            appendMessage(opt.reply, true, null, {
+              url: optWaUrl,
+              label: "Pedir más información por WhatsApp",
+              type: "option_info"
+            });
             
             optionsContainer.innerHTML = "";
             
@@ -1820,9 +1844,10 @@
             waBtn.className = "option-btn";
             waBtn.style.background = "#25d366";
             waBtn.style.color = "#fff";
-            waBtn.innerText = "💬 Hablar con Luis Fernando";
+            waBtn.innerText = "💬 Pedir más información por WhatsApp";
             waBtn.addEventListener("click", function() {
-              window.open("https://wa.me/525521787900?text=" + encodeURIComponent(waText), "_blank");
+              if (typeof gtag === 'function') gtag('event', 'click_whatsapp_chatbot', { 'query_type': 'option_info' });
+              window.open(optWaUrl, "_blank");
             });
             optionsContainer.appendChild(waBtn);
           }
@@ -1850,47 +1875,126 @@
         setTimeout(function() {
           var msgs = body.querySelectorAll(".bot-message");
           for (var idx = msgs.length - 1; idx >= 0; idx--) {
-            if (msgs[idx].innerText.includes("Pensando")) {
+            if (msgs[idx].innerText.includes("Pensando...")) {
               msgs[idx].remove();
               break;
             }
           }
           
-          // Filtrar por palabras financieras, buró de crédito o entregas
-          var replyMsg = "";
-          var queryWaText = "Hola Luis Fernando Martínez, solicito información y asistencia.";
+          var matchedBrand = null;
+          var brandKeywords = {
+            "sedanes": ["versa", "sentra", "altima", "sedan", "sedanes"],
+            "suvs": ["kicks", "x-trail", "xtrail", "pathfinder", "suv", "suvs", "camioneta"],
+            "pickups": ["frontier", "np300", "pickup", "pickups", "troca"],
+            "epower": ["kicks e-power", "x-trail e-power", "epower", "e-power", "electrico", "hibrido"],
+            "demos": ["demo", "demos", "seminuevo", "seminuevos", "usado", "usados", "inventario", "descuento", "remate"]
+          };
           
-          if (query.includes("crédito") || query.includes("credito") || query.includes("buró") || query.includes("buro") || query.includes("financiamiento") || query.includes("requisito") || query.includes("enganche") || query.includes("plazo")) {
-            replyMsg = "Los requisitos básicos para tramitar tu crédito automotriz con Credi Nissan son:\n1. Identificación oficial vigente (INE o Pasaporte).\n2. Comprobante de domicilio reciente (agua, luz o telefonía fija no mayor a 3 meses).\n3. Comprobantes de ingresos de los últimos 3 meses (recibos de nómina timbrados o estados de cuenta bancarios completos).\n4. Buen historial en buró de crédito.\n\nContamos con planes desde el 10% o 15% de enganche y plazos flexibles de 12 a 72 meses. Nuestro asesor experto, Luis Fernando Martínez, evaluará tu caso para brindarte la mejor opción y tasa. Haz clic en el botón de abajo:";
-            queryWaText = "quiero informacion de credito";
-          } else if (query.includes("arrendamiento") || query.includes("leasing") || query.includes("deducir") || query.includes("fiscal") || query.includes("renta") || query.includes("pfae") || query.includes("persona moral")) {
-            replyMsg = "¡Sí, contamos con planes de Arrendamiento Puro (Leasing) Nissan! Es la solución ideal para Personas Físicas con Actividad Empresarial (PFAE) y Personas Morales:\n• 100% deducible de impuestos en rentas mensuales.\n• Pago inicial mínimo para no descapitalizar tu empresa o negocio.\n• Estrena y renueva tu Nissan cada 2 a 4 años.\n• Mantienes intactas tus líneas de crédito bancarias.\n\nPara recibir una cotización y propuesta fiscal a tu medida, haz clic en el botón de abajo:";
-            queryWaText = "quiero informacion de arrendamiento";
-          } else if (query.includes("contado") || query.includes("precio") || query.includes("descuento") || query.includes("bono")) {
-            replyMsg = "Para ofrecerte el mejor precio de contado, bonos de descuento vigentes y promociones especiales en el modelo que buscas, te pondré en contacto directo con tu asesor experto Luis Fernando Martínez a través de WhatsApp. Haz clic abajo:";
-            queryWaText = "quiero cotizacion e informes de contado";
+          for (var bKey in brandKeywords) {
+            for (var k = 0; k < brandKeywords[bKey].length; k++) {
+              var kw = brandKeywords[bKey][k];
+              if (query.includes(kw)) {
+                matchedBrand = bKey;
+                break;
+              }
+            }
+            if (matchedBrand) break;
+          }
+          
+          if (matchedBrand) {
+            var brandCard = document.querySelector('.card-marca[data-brand="' + matchedBrand + '"], .grid-promos .card[data-category="' + matchedBrand + '"]');
+            var brandUrl = brandCard ? (brandCard.getAttribute("onclick") || "").replace(/window.location.href='|'/g, "") : "paginas_promo/promo-" + matchedBrand + ".html";
+            
+            var targetPill = document.querySelector('.filter-pill[data-filter="' + matchedBrand + '"]');
+            if (targetPill) {
+              targetPill.click();
+            }
+            
+            var filterSuggestions = [];
+            var cards = document.querySelectorAll(".grid-promos .card, .related-demo-card");
+            cards.forEach(function(card) {
+              var cat = (card.getAttribute("data-category") || "").toLowerCase();
+              var cardId = (card.getAttribute("data-id") || card.getAttribute("id") || "").toLowerCase();
+              var cardText = (card.innerText || "").toLowerCase();
+              if (cat === matchedBrand || cardId.includes(matchedBrand) || cardText.includes(matchedBrand)) {
+                var nameEl = card.querySelector(".model-name");
+                var priceEl = card.querySelector(".model-price");
+                var name = nameEl ? nameEl.innerText.trim() : "";
+                var price = priceEl ? priceEl.innerText.trim() : "";
+                var id = card.getAttribute("data-id") || card.getAttribute("id") || "";
+                if (name && !filterSuggestions.some(s => s.name === name)) {
+                  filterSuggestions.push({ id: id, name: name, price: price });
+                }
+              }
+            });
+            
+            var brandCleanName = matchedBrand.toUpperCase();
+            var brandWaUrl = "https://wa.me/525521787900?text=" + encodeURIComponent("Hola Luis Fernando Martínez, solicito cotización y promociones de la línea " + brandCleanName);
+            appendMessage("¡Excelente elección! Tenemos modelos y promociones vigentes en nuestra gama " + brandCleanName + ". Puedes consultar las opciones a continuación o pedir atención personalizada por WhatsApp:", true, filterSuggestions.slice(0, 3), {
+              url: brandWaUrl,
+              label: "Cotizar " + brandCleanName + " por WhatsApp",
+              type: "brand_search"
+            });
+            
+            optionsContainer.innerHTML = "";
+            var waBtn = document.createElement("button");
+            waBtn.className = "option-btn";
+            waBtn.style.background = "#25d366";
+            waBtn.style.color = "#fff";
+            waBtn.innerText = "💬 Pedir más información por WhatsApp";
+            waBtn.addEventListener("click", function() {
+              if (typeof gtag === 'function') gtag('event', 'click_whatsapp_chatbot', { 'query_type': 'brand_search' });
+              window.open(brandWaUrl, "_blank");
+            });
+            optionsContainer.appendChild(waBtn);
+
+            var backBtn = document.createElement("button");
+            backBtn.className = "option-btn";
+            backBtn.innerText = "⬅️ Menú Principal";
+            backBtn.addEventListener("click", function() {
+              initChat();
+            });
+            optionsContainer.appendChild(backBtn);
+            return;
+          }
+          
+          var replyMsg = null;
+          var queryWaText = "solicito más información";
+          
+          if (query.includes("crédito") || query.includes("credito") || query.includes("financiamiento") || query.includes("requisito") || query.includes("enganche") || query.includes("mensualidad") || query.includes("plazo")) {
+            replyMsg = "Los requisitos principales de crédito son: INE vigente, comprobante de domicilio (no mayor a 3 meses) y comprobantes de ingresos (últimos 3 meses de recibos de nómina o estados de cuenta bancarios). Contamos con planes desde el 15% de enganche y plazos de 12 hasta 72 meses con respuesta en 24 hrs.";
+            queryWaText = "Hola Luis Fernando Martínez, solicito requisitos y cotización de crédito.";
+          } else if (query.includes("arrendamiento") || query.includes("leasing") || query.includes("deduc") || query.includes("fiscal") || query.includes("renta")) {
+            replyMsg = "El Arrendamiento Puro (Leasing) de Nissan te ofrece beneficios como rentas 100% deducibles de impuestos, pago inicial mínimo, conservación de tu capital y renovación de vehículo cada 2 a 4 años. Aplica para Personas Físicas con Actividad Empresarial (PFAE) y Personas Morales.";
+            queryWaText = "Hola Luis Fernando Martínez, solicito cotización e información sobre arrendamiento.";
           } else if (query.includes("entrega") || query.includes("entregar") || query.includes("tiempo") || query.includes("disponib") || query.includes("inventario")) {
             replyMsg = "Contamos con unidades para entrega inmediata y asignación rápida de inventario. Para darte tiempos exactos del modelo, versión y color de tu interés, te pondré en contacto directo con Luis Fernando Martínez por WhatsApp:";
-            queryWaText = "quiero informacion de entrega e inventario";
+            queryWaText = "Hola Luis Fernando Martínez, quiero consultar disponibilidad y tiempos de entrega.";
           } else if (query.includes("cotiz") || query.includes("informe") || query.includes("información") || query.includes("informacion") || query.includes("info")) {
-            replyMsg = "Para brindarte una cotización formal y asesoría completa sobre cualquier modelo Nissan, te pondré en contacto directo con nuestro asesor experto Luis Fernando Martínez a través de WhatsApp. Haz clic en el botón de abajo:";
-            queryWaText = "quiero cotizacion e informes";
+            replyMsg = "Para brindarte una cotización formal y asesoría completa sobre cualquier modelo Nissan, te pondré en contacto directo con nuestro asesor experto Luis Fernando Martínez a través de WhatsApp:";
+            queryWaText = "Hola Luis Fernando Martínez, solicito cotización e información personalizada.";
           } else if (query.includes("ubicaci") || query.includes("donde est") || query.includes("dónde est") || query.includes("direcci") || query.includes("cita") || query.includes("agendar") || query.includes("manejo") || query.includes("prueba") || query.includes("visita")) {
-            replyMsg = "Con gusto coordinamos tu visita a nuestra sala de ventas o agendamos una prueba de manejo sin costo con nuestro asesor experto Luis Fernando Martínez (solo requieres licencia vigente e INE). Haz clic abajo:";
-            queryWaText = "quiero agendar una cita o prueba de manejo";
+            replyMsg = "Con gusto coordinamos tu visita a nuestra sala de ventas o agendamos una prueba de manejo sin costo con nuestro asesor experto Luis Fernando Martínez (solo requieres licencia vigente e INE):";
+            queryWaText = "Hola Luis Fernando Martínez, quiero agendar una cita o prueba de manejo.";
           }
           
           if (replyMsg) {
-            appendMessage(replyMsg, true);
+            var replyWaUrl = "https://wa.me/525521787900?text=" + encodeURIComponent(queryWaText);
+            appendMessage(replyMsg, true, null, {
+              url: replyWaUrl,
+              label: "Pedir más información por WhatsApp",
+              type: "query_intent"
+            });
             optionsContainer.innerHTML = "";
             
             var waBtn = document.createElement("button");
             waBtn.className = "option-btn";
             waBtn.style.background = "#25d366";
             waBtn.style.color = "#fff";
-            waBtn.innerText = "💬 Hablar con Luis Fernando";
+            waBtn.innerText = "💬 Pedir más información por WhatsApp";
             waBtn.addEventListener("click", function() {
-              window.open("https://wa.me/525521787900?text=" + encodeURIComponent(queryWaText), "_blank");
+              if (typeof gtag === 'function') gtag('event', 'click_whatsapp_chatbot', { 'query_type': 'query_intent' });
+              window.open(replyWaUrl, "_blank");
             });
             optionsContainer.appendChild(waBtn);
             
@@ -1915,18 +2019,55 @@
           });
           
           if (matchedFaq) {
-            appendMessage(matchedFaq.reply, true);
-          } else {
-            appendMessage("Entendido. Para aclarar tus dudas de manera detallada y ofrecerte la mejor alternativa, te pondré en contacto directo con tu asesor experto en la materia, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.", true);
+            var faqCleanLabel = (matchedFaq.label || "dudas frecuentes").replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]/g, "").trim();
+            var faqWaUrl = "https://wa.me/525521787900?text=" + encodeURIComponent("Hola Luis Fernando Martínez, solicito más información sobre: " + faqCleanLabel);
+            appendMessage(matchedFaq.reply, true, null, {
+              url: faqWaUrl,
+              label: "Pedir más información por WhatsApp",
+              type: "faq_info"
+            });
             optionsContainer.innerHTML = "";
             
             var waBtn = document.createElement("button");
             waBtn.className = "option-btn";
             waBtn.style.background = "#25d366";
             waBtn.style.color = "#fff";
-            waBtn.innerText = "💬 Hablar con Luis Fernando";
+            waBtn.innerText = "💬 Pedir más información por WhatsApp";
             waBtn.addEventListener("click", function() {
-              window.open("https://wa.me/525521787900?text=Hola%20Luis%20Fernando%20Mart%C3%ADnez,%20necesito%20aclarar%20unas%20dudas%20detalladas.", "_blank");
+              if (typeof gtag === 'function') gtag('event', 'click_whatsapp_chatbot', { 'query_type': 'faq_info' });
+              window.open(faqWaUrl, "_blank");
+            });
+            optionsContainer.appendChild(waBtn);
+            
+            var backBtn = document.createElement("button");
+            backBtn.className = "option-btn";
+            backBtn.innerText = "⬅️ Menú Principal";
+            backBtn.addEventListener("click", function() {
+              initChat();
+            });
+            optionsContainer.appendChild(backBtn);
+          } else {
+            var fallbackWaUrl = "https://wa.me/525521787900?text=" + encodeURIComponent("Hola Luis Fernando Martínez, solicito más información sobre: " + query);
+            appendMessage(
+              "Entendido. Para aclarar tus dudas de manera personalizada y brindarte cotizaciones o disponibilidad, te pondré en contacto directo con tu asesor experto, Luis Fernando Martínez. Por favor, haz clic en el botón de abajo para pedir más información por WhatsApp:",
+              true,
+              null,
+              {
+                url: fallbackWaUrl,
+                label: "Pedir más información por WhatsApp",
+                type: "fallback_no_data"
+              }
+            );
+            optionsContainer.innerHTML = "";
+            
+            var waBtn = document.createElement("button");
+            waBtn.className = "option-btn";
+            waBtn.style.background = "#25d366";
+            waBtn.style.color = "#fff";
+            waBtn.innerText = "💬 Pedir más información por WhatsApp";
+            waBtn.addEventListener("click", function() {
+              if (typeof gtag === 'function') gtag('event', 'click_whatsapp_chatbot', { 'query_type': 'fallback_no_data' });
+              window.open(fallbackWaUrl, "_blank");
             });
             optionsContainer.appendChild(waBtn);
             
