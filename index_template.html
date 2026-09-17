@@ -2,12 +2,12 @@
 <html lang="es">
 <head>
     <!-- Google Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XRDWZPQ4WT"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163303706-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XRDWZPQ4WT');
+      gtag('config', 'UA-163303706-1');
     </script>
 
     <meta charset="UTF-8">
@@ -210,7 +210,7 @@
     <section id="modelos" class="py-5">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold text-white mb-3 text-glow">Líneas Nissan</h2>
+                <h2 class="display-5 fw-bold mb-3" style="color: #000 !important;">Líneas Nissan</h2>
                 <div class="heading-line mx-auto"></div>
             </div>
 
@@ -456,7 +456,10 @@
 
                     var datos = {
                         nombre: name,
-                        email: email
+                        email: email,
+                        marca: "Nissan",
+                        origen: "Landing Nissan",
+                        fecha: new Date().toLocaleString("es-MX", { timeZone: "America/Mexico_City" })
                     };
 
                     fetch("https://script.google.com/macros/s/AKfycbzKpyk1CqQMqxWrrALiC8JbDnEpuGdDrBSnsYr8NjZ8-aaOC2G691lw2JcydA0Vkm2G/exec", {
@@ -918,11 +921,10 @@
               var categoryBrands = [];
               if (opt.filter === "marcas") {
                 categoryBrands = [
-                  { name: "Sedanes", price: "Versa, Sentra, March y V-Drive (Nuevos/Demos)", url: "paginas_promo/promo-sedanes.html" },
-                  { name: "SUVs & Crossovers", price: "Kicks, X-Trail, Pathfinder y Magnite (Nuevos/Demos)", url: "paginas_promo/promo-suvs.html" },
-                  { name: "Pickups & Trabajo", price: "Frontier y NP300 Chasis (Nuevos/Demos)", url: "paginas_promo/promo-pickups.html" },
-                  { name: "Gama e-POWER", price: "100% Eléctricos sin cables (Nuevos)", url: "paginas_promo/promo-epower.html" },
-                  { name: "Autos Demo en Remate", price: "Liquidación y entrega inmediata", url: "paginas_promo/promo-demos.html" }
+                  { name: "Sedanes", price: "Versa, Sentra, March y V-Drive", url: "paginas_promo/promo-sedanes.html" },
+                  { name: "SUVs & Crossovers", price: "Kicks, X-Trail, Pathfinder y Magnite", url: "paginas_promo/promo-suvs.html" },
+                  { name: "Pickups & Trabajo", price: "Frontier y NP300 Chasis", url: "paginas_promo/promo-pickups.html" },
+                  { name: "Gama e-POWER", price: "100% Eléctricos sin cables", url: "paginas_promo/promo-epower.html" }
                 ];
               } else if (opt.filter === "demos_general") {
                 categoryBrands = [

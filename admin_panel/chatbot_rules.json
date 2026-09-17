@@ -1,6 +1,6 @@
 {
   "sedanes": {
-    "welcome": "¡Hola! Bienvenido a la línea de Sedanes Nissan. 🚗 Aquí te muestro nuestras promociones en modelos nuevos, y también contamos con un bloque especial de unidades demo en liquidación al final de la página. ¿Qué tipo de sedán se adapta mejor a lo que necesitas?",
+    "welcome": "¡Hola! Bienvenido a la línea de Sedanes Nissan. 🚗 Aquí te muestro nuestras promociones en modelos nuevos, requisitos de crédito y opciones de financiamiento o arrendamiento puro. ¿Qué tipo de sedán se adapta mejor a lo que necesitas?",
     "options": [
       {
         "label": "🏙️ Ciudad y Ahorro (Versa / March)",
@@ -25,7 +25,7 @@
     ]
   },
   "suvs": {
-    "welcome": "¡Hola! Bienvenido al portal de SUVs Nissan. 🚙 Tenemos modelos diseñados tanto para la movilidad urbana moderna como para los viajes en familia con máxima seguridad. Al final de la página también encontrarás unidades demo en remate. ¿Qué buscas principalmente en tu SUV?",
+    "welcome": "¡Hola! Bienvenido a la familia de SUVs Nissan. 🚙 Tenemos modelos diseñados tanto para la movilidad urbana moderna como para los viajes en familia con máxima seguridad. ¿Qué buscas principalmente en tu SUV?",
     "options": [
       {
         "label": "🌟 Ágil y Conectada (Kicks / Magnite)",
@@ -120,17 +120,12 @@
     ]
   },
   "general": {
-    "welcome": "¡Hola! Soy tu asistente virtual Nissan. 🤖 Te ayudo a encontrar el modelo ideal para tus necesidades y presupuesto, conocer nuestras ofertas en modelos nuevos, liquidación de autos demo, requisitos de crédito y planes de arrendamiento deducible. ¿Qué te gustaría consultar hoy?",
+    "welcome": "¡Hola! Soy tu asistente virtual Nissan. 🤖 Te ayudo a encontrar el modelo ideal para tus necesidades y presupuesto, conocer nuestras ofertas en modelos nuevos, requisitos de crédito y planes de arrendamiento deducible. ¿Qué te gustaría consultar hoy?",
     "options": [
       {
         "label": "🚗 Ver Gamas Nissan",
         "filter": "marcas",
-        "reply": "Excelente. Haz clic en cualquiera de nuestras categorías para conocer sus modelos nuevos y unidades demo en liquidación:"
-      },
-      {
-        "label": "🔥 Demos en Promoción",
-        "filter": "demos_general",
-        "reply": "¡Perfecto! Te sugiero revisar nuestro catálogo general de autos Demo con precios de remate y listos para entrega inmediata:"
+        "reply": "Excelente. Haz clic en cualquiera de nuestras categorías para conocer sus modelos nuevos:"
       },
       {
         "label": "💳 Crédito y Arrendamiento",

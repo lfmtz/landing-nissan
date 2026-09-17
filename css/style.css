@@ -458,7 +458,7 @@ a, button, .btn {
 
 /* Newsletter Modal Premium Glassmorphism */
 #newsletterModal .modal-dialog {
-    max-width: 440px; /* Más estilizado y vertical para flyers e invitaciones */
+    max-width: 480px;
 }
 .newsletter-modal-content {
     background: rgba(10, 16, 30, 0.95);
@@ -487,14 +487,21 @@ a, button, .btn {
 }
 .newsletter-modal-img-container {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     border-radius: 1rem;
     overflow: hidden;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .newsletter-modal-img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    max-height: 320px;
+    object-fit: contain;
+    display: block;
+    border-radius: 0.8rem;
 }
 
 /* Responsividad para el Hero y Carrusel de Fondo en Móviles */

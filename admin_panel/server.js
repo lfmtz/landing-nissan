@@ -76,6 +76,8 @@ function optimizeCloudinaryUrl(url, brand = '') {
     targetTransform = 'w_1920,c_limit,f_auto,q_auto';
   } else if (brand === 'bg_mobile' || brand === 'carousel_mobile') {
     targetTransform = 'w_1080,c_limit,f_auto,q_auto';
+  } else if (brand === 'popup') {
+    targetTransform = 'w_1200,c_limit,f_auto,q_auto';
   } else if (brand === 'demos') {
     targetTransform = 'w_1080,h_1080,c_fill,g_auto,f_auto,q_auto';
   } else {
@@ -731,8 +733,15 @@ function generateHtmlForBrand(brand, vehicles) {
     `;
   }).join('');
 
+  const dbDataLocal = readData();
+  const landingConfigLocal = dbDataLocal.landing || {};
+  const showDemos = landingConfigLocal.showDemosCard === true;
+
   // Generar enlaces de navegación dinámicos (marcando el activo)
-  const brands = ['sedanes', 'suvs', 'pickups', 'epower', 'demos'];
+  const brands = showDemos
+    ? ['sedanes', 'suvs', 'pickups', 'epower', 'demos']
+    : ['sedanes', 'suvs', 'pickups', 'epower'];
+
   const brandLabels = {
     sedanes: 'SEDANES',
     suvs: 'SUVs',
@@ -745,9 +754,6 @@ function generateHtmlForBrand(brand, vehicles) {
     const label = brandLabels[b] || b.toUpperCase();
     return `<li><a href="promo-${b}.html" class="nav-item-link ${activeClass}" id="link-${b}">${label}</a></li>`;
   }).join('');
-  
-  const dbDataLocal = readData();
-  const landingConfigLocal = dbDataLocal.landing || {};
   
   const uniqueCategories = new Set();
   vehicles.forEach(v => {
@@ -764,17 +770,16 @@ function generateHtmlForBrand(brand, vehicles) {
       const catIdx = headers.findIndex(h => h.toLowerCase().includes('clasificaci') || h.toLowerCase().includes('categor'));
       for (let i = 1; i < parsedRows.length; i++) {
         const cols = parsedRows[i];
-          const modelName = (cols[1] || '').trim().replace(/^["']|["']$/g, '');
-          let catVal = (cols[catIdx] || 'suv').trim().replace(/^["']|["']$/g, '').trim().toLowerCase();
-          catVal = getAutoClassification(catVal, modelName);
-          uniqueCategories.add(catVal);
+        if (cols.length === 0 || (cols.length === 1 && cols[0] === '')) continue;
+        const catVal = catIdx !== -1 ? (cols[catIdx] || 'suv').trim().replace(/^["']|["']$/g, '').trim().toLowerCase() : 'suv';
+        if (catVal) uniqueCategories.add(catVal);
       }
     }
   }
 
   // Cross-Promotion Section (Related Demos)
   let relatedDemosHtml = '';
-  if (brand !== 'demos' && demosCsv.trim()) {
+  if (showDemos && brand !== 'demos' && demosCsv.trim()) {
     const parsedRows = parseCsv(demosCsv.trim());
     if (parsedRows.length > 1) {
       const headers = parsedRows[0].map(h => h.trim().replace(/^["']|["']$/g, ''));
@@ -1024,7 +1029,7 @@ function generateHtmlForBrand(brand, vehicles) {
     }
   }
 
-  let leasingPopupImgSrc = optimizeCloudinaryUrl(landingConfigLocal.leasingPopupImage) || '../imagenes/popup_arrendamiento.jpg';
+  let leasingPopupImgSrc = optimizeCloudinaryUrl(landingConfigLocal.leasingPopupImage, 'popup') || '../imagenes/popup_arrendamiento.jpg';
   if (leasingPopupImgSrc && !leasingPopupImgSrc.startsWith('http') && !leasingPopupImgSrc.startsWith('../')) {
     leasingPopupImgSrc = `../${leasingPopupImgSrc}`;
   }
@@ -1033,12 +1038,12 @@ function generateHtmlForBrand(brand, vehicles) {
 <html lang="es">
  <head>
    <!-- Google Tag (gtag.js) - Google Analytics -->
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XRDWZPQ4WT"></script>
+   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163303706-1"></script>
    <script>
      window.dataLayer = window.dataLayer || [];
      function gtag(){dataLayer.push(arguments);}
      gtag('js', new Date());
-     gtag('config', 'G-XRDWZPQ4WT');
+     gtag('config', 'UA-163303706-1');
    </script>
 
   <meta charset="utf-8"/>
@@ -1711,8 +1716,9 @@ function generateHtmlForBrand(brand, vehicles) {
     }
     .leasing-popup-content {
       position: relative;
-      max-width: 420px; /* Ajustado para imágenes verticales / alargadas */
-      width: 100%;
+      max-width: 500px;
+      max-height: 88vh;
+      width: auto;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 10px 40px rgba(0, 229, 255, 0.3);
@@ -1720,18 +1726,40 @@ function generateHtmlForBrand(brand, vehicles) {
       background: #000;
       transform: scale(0.9);
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .leasing-popup-overlay.show .leasing-popup-content {
       transform: scale(1);
     }
-    .leasing-popup-img {
+    .leasing-popup-content a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
+      height: 100%;
+    }
+    .leasing-popup-img {
+      max-width: 100%;
+      max-height: 85vh;
+      width: auto;
       height: auto;
+      object-fit: contain;
       display: block;
       transition: transform 0.3s ease;
     }
     .leasing-popup-img:hover {
-      transform: scale(1.02);
+      transform: scale(1.01);
+    }
+    @media (max-width: 576px) {
+      .leasing-popup-content {
+        max-width: 92vw;
+        max-height: 85vh;
+      }
+      .leasing-popup-img {
+        max-height: 80vh;
+      }
     }
     .leasing-popup-close {
       position: absolute;
@@ -2501,8 +2529,7 @@ function generateHtmlForBrand(brand, vehicles) {
                 }, 3000);
                 windowEl.classList.remove("active");
               } else {
-                alert("Para ver este vehículo demo te llevaremos a la sección correspondiente.");
-                window.location.href = "../paginas_promo/promo-demos.html";
+                alert("Para más información y disponibilidad de esta unidad, por favor contáctanos por WhatsApp.");
               }
             });
             msg.appendChild(cardEl);
@@ -3056,7 +3083,7 @@ function generateIndexHtml(dbData) {
   }
   
   // Newsletter registration popup
-  const popupImg = optimizeCloudinaryUrl(landing.newsletterPopupImage || '');
+  const popupImg = optimizeCloudinaryUrl(landing.newsletterPopupImage || '', 'popup');
   html = html.replace(/\{\{NEWSLETTER_POPUP_IMAGE\}\}/g, popupImg);
 
   // Dynamic Backgrounds (Cloudinary or local fallback sin recorte)
