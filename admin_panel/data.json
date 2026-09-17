@@ -467,8 +467,8 @@
         "whatsapp": "https://wa.me/5215521787900?text=Quiero%20informaci%C3%B3n%20de%3A%20NP300%20Chasis"
       }
     ],
-    "newsletterPopupImage": "",
-    "leasingPopupImage": "",
+    "newsletterPopupImage": "https://res.cloudinary.com/x15obxmg/image/upload/v1789612319/popupnewsletter.jpg",
+    "leasingPopupImage": "https://res.cloudinary.com/x15obxmg/image/upload/v1789612521/popuparrendamiento.jpg",
     "bodyBg": "https://res.cloudinary.com/x15obxmg/image/upload/v1789496274/fondo_escritorio.png",
     "bodyBgMobile": "https://res.cloudinary.com/x15obxmg/image/upload/v1789496273/fondo_cel.png",
     "brandsImages": {
