@@ -324,9 +324,14 @@
   "epower": [
     {
       "id": "nissan-kicks-epower",
-      "name": "Nissan Kicks e-POWER",
-      "price": "Desde ,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/kicks_epower.png",
+      "name": "Nissan Kicks e-POWER 2026",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $661,900",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600985/kicks_epower.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600985/kicks_epower.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20Nissan%20Kicks%20e-POWER",
       "description": "Impulsión 100% eléctrica con aceleración instantánea. Olvídate de los cargadores y disfruta de una autonomía de más de 900 km por tanque.",
       "descriptionSize": "1.1rem",
@@ -334,37 +339,42 @@
       "benefits": [
         "Exenta de verificación y tenencia",
         "Placas verdes ecológicas",
-        "Bono de hasta ,000 con Credi Nissan"
+        "Bono hasta de $120,000"
       ],
-      "legal": "* Aplica beneficios fiscales según entidad federativa.",
+      "fichaTecnica": "",
+      "legal": "* Aplica beneficios fiscales según entidad federativa.Aplica terminos y condiciones, Consulta con tu asesor de ventas",
       "accentColor": "#0284c7",
       "underlineStyle": "solid",
-      "category": "electrico",
-      "promoMes": "BENEFICIOS FISCALES Y SIN VERIFICACIÓN",
+      "category": "electricos",
+      "promoMes": "48 meses sin intereses",
       "promoMesTag": "⚡ 100% ELÉCTRICA SIN CABLES",
-      "promoMesIcon": "🔌"
+      "promoMesIcon": "⚡"
     },
     {
       "id": "nissan-xtrail-epower",
-      "name": "Nissan X-Trail e-POWER e-4ORCE",
-      "price": "Desde ,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/xtrail_epower.png",
+      "name": "Nissan X-Trail e-POWER e-4ORCE 2027",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $751,990",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600969/xtrail_electrica.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600969/xtrail_electrica.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20la%20Nissan%20X-Trail%20e-POWER",
-      "description": "Doble motor eléctrico y tracción integral e-4ORCE para un agarre insuperable en cualquier clima o curva. Silencio total de marcha y acabados premium.",
+      "description": "Aceleración 100% eléctrica sin cables ni tiempos de carga: autonomía insuperable y confort premium. ¡Estrena tu X-Trail e-POWER con financiamiento a tu medida!",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Tracción integral eléctrica e-4ORCE",
-        "Tasa preferencial especial Credi Nissan",
-        "Seguro en cortesía primer año"
+        "Seguro gratis 1 año*"
       ],
-      "legal": "* Consulta versiones Exclusive y Platinum.",
+      "fichaTecnica": "",
+      "legal": "* Consulta versiones Exclusive y Platinum.Aplica terminos y condiciones. Consulta con tu asesor de ventas",
       "accentColor": "#0284c7",
       "underlineStyle": "solid",
-      "category": "electrico",
-      "promoMes": "TRACCIÓN TOTAL ELÉCTRICA e-4ORCE",
+      "category": "electricos",
+      "promoMes": "",
       "promoMesTag": "⚡ EL PODER DE LA INNOVACIÓN",
-      "promoMesIcon": "🔋"
+      "promoMesIcon": "💳"
     }
   ],
   "demos": [
