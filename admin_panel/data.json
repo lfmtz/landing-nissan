@@ -440,31 +440,31 @@
     "promos": [
       {
         "id": "lp-1",
-        "name": "",
-        "image": "",
-        "description": "",
-        "whatsapp": ""
+        "name": "Versa",
+        "image": "https://res.cloudinary.com/x15obxmg/image/upload/v1789611140/versa_tarjeta_promo.jpg",
+        "description": "¡Tú eliges cómo estrenar! Aprovecha hasta 48 Meses Sin Intereses para pagar sin sobrecosto o llévate un bono espectacular directo al precio. Unidades limitadas con entrega inmediata. ¡Pide tu cotización y elige tu beneficio!",
+        "whatsapp": "https://wa.me/5215521787900?text=Quiero%20informaci%C3%B3n%20de%3A%20Versa"
       },
       {
         "id": "lp-2",
-        "name": "",
-        "image": "",
-        "description": "",
-        "whatsapp": ""
+        "name": "Sentra",
+        "image": "https://res.cloudinary.com/x15obxmg/image/upload/v1789611140/sentra_tarjeta_promo.jpg",
+        "description": "Elegancia, tecnología de vanguardia y el mejor manejo urbano. Estrena tu Sentra con 24 Meses Sin Intereses o aprovecha bonos espectaculares directos a tu plan. ¡Pide tu cotización y estrena hoy mismo!",
+        "whatsapp": "https://wa.me/5215521787900?text=Quiero%20informaci%C3%B3n%20de%3A%20Sentra"
       },
       {
         "id": "lp-3",
-        "name": "",
-        "image": "",
-        "description": "",
-        "whatsapp": ""
+        "name": "X-Trail",
+        "image": "https://res.cloudinary.com/x15obxmg/image/upload/v1789611135/xtrail_tarjeta_promo.jpg",
+        "description": "Espacio familiar, confort premium y seguridad avanzada. Estrena tu X-Trail con 24 Meses Sin Intereses + 1 año de seguro gratis, o elige bonos espectaculares directos a tu plan. ¡Pide tu cotización y aprovecha esta oportunidad por tiempo limitado!",
+        "whatsapp": "https://wa.me/5215521787900?text=Quiero%20informaci%C3%B3n%20de%3A%20X-Trail"
       },
       {
         "id": "lp-4",
-        "name": "",
-        "image": "",
-        "description": "",
-        "whatsapp": ""
+        "name": "NP300 Chasis",
+        "image": "https://res.cloudinary.com/x15obxmg/image/upload/v1789611134/np300_tarjeta_promo.jpg",
+        "description": "La herramienta de trabajo más confiable y resistente de México. Estrena tu NP300 con hasta 36 Meses Sin Intereses o aprovecha bonos espectaculares directos a tu cotización. ¡Pide tu cotización y pon a trabajar tu inversión hoy mismo!",
+        "whatsapp": "https://wa.me/5215521787900?text=Quiero%20informaci%C3%B3n%20de%3A%20NP300%20Chasis"
       }
     ],
     "newsletterPopupImage": "",

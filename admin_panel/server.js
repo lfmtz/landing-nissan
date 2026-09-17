@@ -2469,7 +2469,7 @@ function generateHtmlForBrand(brand, vehicles) {
               
               if (targetId) {
                 cardsElements.forEach(function(el) {
-                  if (el.getAttribute("id") === targetId) {
+                  if (el.getAttribute("id") === targetId || el.getAttribute("data-id") === targetId || el.getAttribute("id") === "auto-" + targetId) {
                     targetEl = el;
                   }
                   var waBtn = el.querySelector(".btn-wa, .btn-wa-table");
@@ -2561,6 +2561,17 @@ function generateHtmlForBrand(brand, vehicles) {
             }
           }
           
+          if (opt.filter === "credito_leasing") {
+            appendMessage(opt.reply, true);
+            setTimeout(function() {
+              loadOptions([
+                kb.faq.options[0],
+                kb.faq.options[1]
+              ]);
+            }, 600);
+            return;
+          }
+
           if (opt.filter) {
             var targetPill = document.querySelector('.filter-pill[data-filter="' + opt.filter + '"]');
             if (targetPill) {
@@ -2568,14 +2579,19 @@ function generateHtmlForBrand(brand, vehicles) {
             }
             var suggestions = [];
             var cards = document.querySelectorAll(".grid-promos .card, .related-demo-card");
+            var filterTerm = (opt.filter || "").toLowerCase();
             
             cards.forEach(function(card) {
-              if (card.getAttribute("data-category") === opt.filter) {
+              var cat = (card.getAttribute("data-category") || "").toLowerCase();
+              var cardId = (card.getAttribute("data-id") || card.getAttribute("id") || "").toLowerCase();
+              var cardText = (card.innerText || "").toLowerCase();
+
+              if (cat === filterTerm || cardId.includes(filterTerm) || cardText.includes(filterTerm)) {
                 var nameEl = card.querySelector(".model-name");
                 var priceEl = card.querySelector(".model-price");
-                var name = nameEl ? nameEl.innerText : "";
-                var price = priceEl ? priceEl.innerText : "";
-                var id = card.getAttribute("id") || "";
+                var name = nameEl ? nameEl.innerText.trim() : "";
+                var price = priceEl ? priceEl.innerText.trim() : "";
+                var id = card.getAttribute("data-id") || card.getAttribute("id") || "";
                 
                 if (name && !suggestions.some(s => s.name === name)) {
                   suggestions.push({ id: id, name: name, price: price });
@@ -2585,11 +2601,13 @@ function generateHtmlForBrand(brand, vehicles) {
             
             var tableRows = document.querySelectorAll(".demo-excel-table tbody tr");
             tableRows.forEach(function(row) {
-              if (row.getAttribute("data-category") === opt.filter) {
+              var cat = (row.getAttribute("data-category") || "").toLowerCase();
+              var rowText = (row.innerText || "").toLowerCase();
+              if (cat === filterTerm || rowText.includes(filterTerm)) {
                 var tds = row.getElementsByTagName("td");
                 if (tds.length >= 6) {
-                  var nameVal = tds[1].innerText + " (Demo)";
-                  var priceVal = tds[5].innerText;
+                  var nameVal = tds[1].innerText.trim() + " (Demo)";
+                  var priceVal = tds[5].innerText.trim();
                   var idVal = row.getAttribute("id") || "";
                   
                   if (!suggestions.some(s => s.name === nameVal)) {
@@ -2604,7 +2622,7 @@ function generateHtmlForBrand(brand, vehicles) {
             if (limitedSuggestions.length > 0) {
               appendMessage(opt.reply, true, limitedSuggestions);
             } else {
-              appendMessage("Actualmente no tenemos unidades publicadas en esta categoría para esta marca, pero te podemos cotizar sobre pedido. ¡Escríbenos por WhatsApp!", true);
+              appendMessage(opt.reply, true);
             }
           } else if (opt.reply) {
             appendMessage(opt.reply, true);
@@ -2668,24 +2686,24 @@ function generateHtmlForBrand(brand, vehicles) {
           var replyMsg = "";
           var queryWaText = "Hola Luis Fernando Martínez, solicito información y asistencia.";
           
-          if (query.includes("crédito") || query.includes("credito") || query.includes("buró") || query.includes("buro")) {
-            replyMsg = "Entendido. Para darte una respuesta precisa sobre tu crédito o buró de crédito, te pondré en contacto directo con nuestro asesor experto en la materia, Luis Fernando Martínez, por WhatsApp. Él analizará tu caso personalmente para darte la mejor opción. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
+          if (query.includes("crédito") || query.includes("credito") || query.includes("buró") || query.includes("buro") || query.includes("financiamiento") || query.includes("requisito") || query.includes("enganche") || query.includes("plazo")) {
+            replyMsg = "Los requisitos básicos para tramitar tu crédito automotriz con Credi Nissan son:\\n1. Identificación oficial vigente (INE o Pasaporte).\\n2. Comprobante de domicilio reciente (agua, luz o telefonía fija no mayor a 3 meses).\\n3. Comprobantes de ingresos de los últimos 3 meses (recibos de nómina timbrados o estados de cuenta bancarios completos).\\n4. Buen historial en buró de crédito.\\n\\nContamos con planes desde el 10% o 15% de enganche y plazos flexibles de 12 a 72 meses. Nuestro asesor experto, Luis Fernando Martínez, evaluará tu caso para brindarte la mejor opción y tasa. Haz clic en el botón de abajo:";
             queryWaText = "quiero informacion de credito";
-          } else if (query.includes("arrendamiento") || query.includes("leasing")) {
-            replyMsg = "Entendido. Para darte una cotización exacta de arrendamiento y explicarte los beneficios fiscales, te pondré en contacto directo con nuestro asesor experto, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
+          } else if (query.includes("arrendamiento") || query.includes("leasing") || query.includes("deducir") || query.includes("fiscal") || query.includes("renta") || query.includes("pfae") || query.includes("persona moral")) {
+            replyMsg = "¡Sí, contamos con planes de Arrendamiento Puro (Leasing) Nissan! Es la solución ideal para Personas Físicas con Actividad Empresarial (PFAE) y Personas Morales:\\n• 100% deducible de impuestos en rentas mensuales.\\n• Pago inicial mínimo para no descapitalizar tu empresa o negocio.\\n• Estrena y renueva tu Nissan cada 2 a 4 años.\\n• Mantienes intactas tus líneas de crédito bancarias.\\n\\nPara recibir una cotización y propuesta fiscal a tu medida, haz clic en el botón de abajo:";
             queryWaText = "quiero informacion de arrendamiento";
-          } else if (query.includes("contado") || query.includes("precio")) {
-            replyMsg = "Entendido. Para ofrecerte el mejor precio de contado y descuentos vigentes, te pondré en contacto directo con tu asesor experto en la materia, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
-            queryWaText = "quiero informacion de contado";
-          } else if (query.includes("entrega") || query.includes("entregar") || query.includes("tiempo")) {
-            replyMsg = "Entendido. Para darte los tiempos exactos de entrega de las unidades en inventario o pedido especial, te pondré en contacto directo con tu asesor experto en la materia, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
-            queryWaText = "quiero informacion de entrega";
+          } else if (query.includes("contado") || query.includes("precio") || query.includes("descuento") || query.includes("bono")) {
+            replyMsg = "Para ofrecerte el mejor precio de contado, bonos de descuento vigentes y promociones especiales en el modelo que buscas, te pondré en contacto directo con tu asesor experto Luis Fernando Martínez a través de WhatsApp. Haz clic abajo:";
+            queryWaText = "quiero cotizacion e informes de contado";
+          } else if (query.includes("entrega") || query.includes("entregar") || query.includes("tiempo") || query.includes("disponib") || query.includes("inventario")) {
+            replyMsg = "Contamos con unidades para entrega inmediata y asignación rápida de inventario. Para darte tiempos exactos del modelo, versión y color de tu interés, te pondré en contacto directo con Luis Fernando Martínez por WhatsApp:";
+            queryWaText = "quiero informacion de entrega e inventario";
           } else if (query.includes("cotiz") || query.includes("informe") || query.includes("información") || query.includes("informacion") || query.includes("info")) {
-            replyMsg = "Entendido. Para darte una cotización exacta o brindarte informes detallados sobre cualquier unidad, te pondré en contacto directo con tu asesor experto en la materia, Luis Fernando Martínez, a través de WhatsApp. Por favor, haz clic en el botón de abajo para iniciar tu atención personalizada.";
+            replyMsg = "Para brindarte una cotización formal y asesoría completa sobre cualquier modelo Nissan, te pondré en contacto directo con nuestro asesor experto Luis Fernando Martínez a través de WhatsApp. Haz clic en el botón de abajo:";
             queryWaText = "quiero cotizacion e informes";
-          } else if (query.includes("ubicaci") || query.includes("donde est") || query.includes("dónde est") || query.includes("direcci") || query.includes("cita") || query.includes("agendar")) {
-            replyMsg = "Entendido. Para darte nuestra ubicación exacta, coordinar tu visita a nuestra sala de ventas o agendar una cita con nuestro asesor experto Luis Fernando Martínez, te pondré en contacto directo por WhatsApp. Por favor, haz clic en el botón de abajo para que te enviemos la información.";
-            queryWaText = "quiero agendar una cita";
+          } else if (query.includes("ubicaci") || query.includes("donde est") || query.includes("dónde est") || query.includes("direcci") || query.includes("cita") || query.includes("agendar") || query.includes("manejo") || query.includes("prueba") || query.includes("visita")) {
+            replyMsg = "Con gusto coordinamos tu visita a nuestra sala de ventas o agendamos una prueba de manejo sin costo con nuestro asesor experto Luis Fernando Martínez (solo requieres licencia vigente e INE). Haz clic abajo:";
+            queryWaText = "quiero agendar una cita o prueba de manejo";
           }
           
           if (replyMsg) {
