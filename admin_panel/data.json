@@ -2,69 +2,109 @@
   "sedanes": [
     {
       "id": "nissan-versa",
-      "name": "Nissan Versa 2025",
-      "price": "Desde ,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/versa_nissan.png",
+      "name": "Versa 2026",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $328,900",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601016/new_versa.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601016/new_versa.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20Nissan%20Versa",
-      "description": "El sedán preferido de México por su confiabilidad, amplio espacio interior y consumo de combustible insuperable. Equipado con 6 bolsas de aire de serie.",
+      "description": "El sedán preferido de México por su confiabilidad, amplio espacio interior y consumo de combustible insuperable.\r\nMensualidades desde <span style=\"color: red; font-weight: bold;\"><b>$5,399*</b></span>",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Bono especial de hasta ,000",
-        "0% comisión por apertura con Credi Nissan",
-        "Seguro en cortesía primer año"
+        "Bono especial de hasta $65,910*",
+        "0% comisión por apertura con Credi Nissan*"
       ],
+      "fichaTecnica": "",
       "legal": "* Imágenes ilustrativas. Consulta versiones disponibles. Aplica términos y condiciones de Credi Nissan.",
-      "accentColor": "#C3002F",
+      "accentColor": "#c3002f",
       "underlineStyle": "solid",
       "category": "sedan",
-      "promoMes": "HASTA 24 MESES SIN INTERESES",
+      "promoMes": "HASTA 48 MESES SIN INTERESES",
       "promoMesTag": "⭐ SEDÁN MÁS VENDIDO",
-      "promoMesIcon": "🏆"
+      "promoMesIcon": "⚡"
     },
     {
       "id": "nissan-sentra",
-      "name": "Nissan Sentra 2025",
-      "price": "Desde ,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/sentra_nissan.png",
+      "name": "Sentra 2026",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $473,100",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601012/sentra.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601012/sentra.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20Nissan%20Sentra",
-      "description": "Elegancia deportiva que cautiva a primera vista. Motor de 2.0L, pantalla táctil de 8 pulgadas y tecnologías avanzadas Nissan Intelligent Mobility.",
+      "description": "Elegancia deportiva que cautiva a primera vista, mensualidades desde <span style=\"color: red; font-weight: bold;\"><span style=\"color: red; font-weight: bold;\">$6,799</span></span>",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Tasa preferencial desde 9.99%",
-        "0% comisión por apertura",
-        "Garantía extendida de 3 años"
+        "Bono especial de hasta $35,000*",
+        "0% comisión por apertura con Credi Nissan*"
       ],
+      "fichaTecnica": "",
       "legal": "* Consulta versiones y modelos en piso de venta. Aplica restricciones con Credi Nissan.",
-      "accentColor": "#C3002F",
+      "accentColor": "#c3002f",
       "underlineStyle": "solid",
       "category": "sedan",
-      "promoMes": "BONO DE CONTADO O TASA BAJA",
+      "promoMes": "24 meses sin intereses*",
       "promoMesTag": "🔥 PROMOCIÓN DEL MES",
       "promoMesIcon": "⚡"
     },
     {
       "id": "nissan-altima",
-      "name": "Nissan Altima 2025",
-      "price": "Desde ,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/altima_nissan.png",
+      "name": "March 2026",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $295,900",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601013/march.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601013/march.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20Nissan%20Altima",
-      "description": "El pináculo de la ingeniería japonesa. Motor VC-Turbo de compresión variable, tracción refinada y ProPILOT Assist para una conducción semi-autónoma.",
+      "description": "Rendimiento imparable, agilidad urbana y la máxima seguridad para tu día a día. ¡Estrena tu nuevo March 2026 con financiamiento a tu medida!",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Bono ejecutivo de hasta ,000",
-        "Mantenimientos incluidos por 2 años",
-        "Planes de arrendamiento deducibles"
+        "Ó bono hasta $70,000"
       ],
+      "fichaTecnica": "",
       "legal": "* Aplica para personas físicas con actividad empresarial o personas morales. Consulta términos.",
-      "accentColor": "#111111",
+      "accentColor": "#f50000",
       "underlineStyle": "solid",
       "category": "sedan",
-      "promoMes": "ARRENDAMIENTO PURO Y CRÉDITO PREFERENCIAL",
-      "promoMesTag": "👑 GAMA EJECUTIVA",
-      "promoMesIcon": "💼"
+      "promoMes": "48 meses sin intereses + 1 año de seguro gratis",
+      "promoMesTag": "",
+      "promoMesIcon": "🔥"
+    },
+    {
+      "id": "sedanes-1789604918780",
+      "name": "V-Drive",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $322,100",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601014/v-drive.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601014/v-drive.jpg"
+      ],
+      "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20V-Drive",
+      "description": "Espacio, durabilidad y el máximo rendimiento de combustible para generar ganancias todos los días. ¡Estrena tu V-Drive con financiamiento a tu medida!\r\nMensualidades desde <span style=\"color: red; font-weight: bold;\"><b>$5,899*</b></span>",
+      "descriptionSize": "1.0rem",
+      "descriptionColor": "#333333",
+      "benefits": [
+        "Ó bono hasta $45,000"
+      ],
+      "fichaTecnica": "",
+      "legal": "* Promoción válida el mes en curso. Sujeta a cambios sin previo aviso con Credi Nissan.",
+      "accentColor": "#c3002f",
+      "underlineStyle": "solid",
+      "category": "sedan",
+      "promoMes": "36 meses sin intereses",
+      "promoMesTag": "",
+      "promoMesIcon": "🔥"
     }
   ],
   "suvs": [
