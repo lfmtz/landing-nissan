@@ -244,47 +244,81 @@
   "pickups": [
     {
       "id": "nissan-np300",
-      "name": "Nissan NP300 Chasis & Estacas",
-      "price": "Desde ,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/np300_nissan.png",
+      "name": "NP300 Chasis 2026",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $499,990",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601001/chasis.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601001/chasis.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20la%20Nissan%20NP300",
-      "description": "La reina indiscutible del trabajo en México. Chasis reforzado de alta durabilidad, capaz de cargar más de 1,200 kg bajo cualquier condición de ruta.",
+      "description": "Capacidad de carga insuperable, resistencia legendaria y el chasis más confiable para tu negocio. ¡Estrena tu NP300 Chasis con financiamiento a tu medida!\r\nMensualidades desde <span style=\"color: red; font-weight: bold;\"><b>$6,999*</b></span>",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Bono PyME de hasta ,000",
-        "Planes especiales de flotilla y crédito comercial",
-        "0% comisión por apertura"
+        "Bono hasta de $60,000"
       ],
-      "legal": "* Aplica para versiones Chasis, Estacas y Pick Up TM.",
+      "fichaTecnica": "",
+      "legal": "*Aplica terminos y condiciones. Pregunta con tu asesor de ventas",
       "accentColor": "#b45309",
       "underlineStyle": "solid",
       "category": "pickup",
-      "promoMes": "PLAN PYME Y FLOTILLAS DISPONIBLE",
+      "promoMes": "36 meses sin intereses*",
       "promoMesTag": "💼 LÍDER EN TRABAJO",
-      "promoMesIcon": "🛠️"
+      "promoMesIcon": "⚡"
     },
     {
       "id": "nissan-frontier",
-      "name": "Nissan Frontier Doble Cabina & PRO-4X",
-      "price": "Desde ,900",
-      "image": "https://res.cloudinary.com/dbxa0pozm/image/upload/f_auto,q_auto/v1786995376/frontier_nissan.png",
+      "name": "Frontier XE 2026",
+      "km": "",
+      "listPrice": "",
+      "price": "Desde $568,990",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600991/frontier.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600991/frontier.jpg"
+      ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20la%20Nissan%20Frontier",
-      "description": "Fuerza implacable para el trabajo y confort excepcional para el día a día. Suspensión trasera de 5 brazos (multilink) que absorbe cualquier irregularidad.",
+      "description": "Robustez comprobada, amplio espacio interior y tecnología que respalda cada trayecto. ¡Cotiza hoy tu Frontier XE con enganche accesible!",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Bono de hasta ,000",
-        "Tasa preferencial desde 10.99%",
-        "Seguro en cortesía primer año"
+        "Bono de hasta $110,000*"
       ],
-      "legal": "* Consulta versiones gasolina y diésel 4x4.",
-      "accentColor": "#C3002F",
+      "fichaTecnica": "",
+      "legal": "* Consulta versiones .Sujeto a aprobación de crédito.Consulta con tu asesor de ventas",
+      "accentColor": "#b45309",
       "underlineStyle": "solid",
       "category": "pickup",
-      "promoMes": "BONO DE HASTA ,000 O SEGURO GRATIS",
+      "promoMes": "",
       "promoMesTag": "🛻 FUERZA Y AVENTURA",
-      "promoMesIcon": "🧗"
+      "promoMesIcon": "💳"
+    },
+    {
+      "id": "pickups-1789608812457",
+      "name": "Frontier Pro4X",
+      "km": "",
+      "listPrice": "",
+      "price": "$1,071,900",
+      "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601001/frontier_v6.jpg",
+      "images": [
+        "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601001/frontier_v6.jpg"
+      ],
+      "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20Frontier%20Pro4X",
+      "description": "Máxima capacidad off-road, suspensión todoterreno y lujo interior con tecnología de seguridad avanzada. ¡Cotiza hoy tu Frontier PRO-4X con planes exclusivos!",
+      "descriptionSize": "1.0rem",
+      "descriptionColor": "#333333",
+      "benefits": [
+        "Bono hasta de $182,000"
+      ],
+      "fichaTecnica": "",
+      "legal": "* Promoción válida el mes en curso. Sujeta a cambios sin previo aviso con Credi Nissan.",
+      "accentColor": "#b45309",
+      "underlineStyle": "solid",
+      "category": "pickup",
+      "promoMes": "",
+      "promoMesTag": "",
+      "promoMesIcon": "💳"
     }
   ],
   "epower": [
