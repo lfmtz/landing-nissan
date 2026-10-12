@@ -1,0 +1,27 @@
+{
+  "name": "cloudinary-manager",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Administra fotos y folders de varias cuentas de Cloudinary desde el celular o la computadora.",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c yellow,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node dev-api.mjs",
+    "dev:web": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "vite": "^5.4.11"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

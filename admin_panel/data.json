@@ -5,7 +5,7 @@
       "name": "Versa 2026",
       "km": "",
       "listPrice": "",
-      "price": "Desde $328,900",
+      "price": "Desde $382,900",
       "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601016/new_versa.jpg",
       "images": [
         "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601016/new_versa.jpg"
@@ -15,8 +15,7 @@
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Bono especial de hasta $65,910*",
-        "0% comisión por apertura con Credi Nissan*"
+        "Bono especial de hasta $74,910*"
       ],
       "fichaTecnica": "",
       "legal": "* Imágenes ilustrativas. Consulta versiones disponibles. Aplica términos y condiciones de Credi Nissan.",
@@ -38,19 +37,18 @@
         "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601012/sentra.jpg"
       ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20Nissan%20Sentra",
-      "description": "Elegancia deportiva que cautiva a primera vista, mensualidades desde <span style=\"color: red; font-weight: bold;\"><span style=\"color: red; font-weight: bold;\">$6,799</span></span>",
+      "description": "Elegancia deportiva que cautiva a primera vista, mensualidades desde <span style=\"color: red; font-weight: bold;\"><span style=\"color: red; font-weight: bold;\">$6,699</span></span>",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Bono especial de hasta $35,000*",
-        "0% comisión por apertura con Credi Nissan*"
+        "Bono especial de hasta $51,110*"
       ],
       "fichaTecnica": "",
       "legal": "* Consulta versiones y modelos en piso de venta. Aplica restricciones con Credi Nissan.",
       "accentColor": "#c3002f",
       "underlineStyle": "solid",
       "category": "sedan",
-      "promoMes": "24 meses sin intereses*",
+      "promoMes": "hasta 36 meses sin intereses*",
       "promoMesTag": "🔥 PROMOCIÓN DEL MES",
       "promoMesIcon": "⚡"
     },
@@ -59,7 +57,7 @@
       "name": "March 2026",
       "km": "",
       "listPrice": "",
-      "price": "Desde $295,900",
+      "price": "Desde $323,990",
       "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601013/march.jpg",
       "images": [
         "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601013/march.jpg"
@@ -69,14 +67,14 @@
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Ó bono hasta $70,000"
+        "Ó bono hasta $50,000"
       ],
       "fichaTecnica": "",
       "legal": "* Aplica para personas físicas con actividad empresarial o personas morales. Consulta términos.",
       "accentColor": "#f50000",
       "underlineStyle": "solid",
-      "category": "sedan",
-      "promoMes": "48 meses sin intereses + 1 año de seguro gratis",
+      "category": "hatchback",
+      "promoMes": "24 meses sin intereses + 1 año de seguro gratis",
       "promoMesTag": "",
       "promoMesIcon": "🔥"
     },
@@ -91,18 +89,18 @@
         "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789601014/v-drive.jpg"
       ],
       "whatsapp": "https://wa.me/525521787900?text=Hola%2C%20me%20interesa%20el%20V-Drive",
-      "description": "Espacio, durabilidad y el máximo rendimiento de combustible para generar ganancias todos los días. ¡Estrena tu V-Drive con financiamiento a tu medida!\r\nMensualidades desde <span style=\"color: red; font-weight: bold;\"><b>$5,899*</b></span>",
+      "description": "Espacio, durabilidad y el máximo rendimiento de combustible para generar ganancias todos los días. ¡Estrena tu V-Drive con financiamiento a tu medida!\r\nMensualidades desde <span style=\"color: red; font-weight: bold;\"><b>$5,699*</b></span>",
       "descriptionSize": "1.0rem",
       "descriptionColor": "#333333",
       "benefits": [
-        "Ó bono hasta $45,000"
+        "Ó bono hasta $28,000"
       ],
       "fichaTecnica": "",
       "legal": "* Promoción válida el mes en curso. Sujeta a cambios sin previo aviso con Credi Nissan.",
       "accentColor": "#c3002f",
       "underlineStyle": "solid",
       "category": "sedan",
-      "promoMes": "36 meses sin intereses",
+      "promoMes": "hasta 24 meses sin intereses*",
       "promoMesTag": "",
       "promoMesIcon": "🔥"
     }
