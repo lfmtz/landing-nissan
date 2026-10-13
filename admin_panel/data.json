@@ -324,7 +324,7 @@
       "name": "Nissan Kicks e-POWER 2026",
       "km": "",
       "listPrice": "",
-      "price": "Desde $661,900",
+      "price": "Desde $616,900",
       "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600985/kicks_epower.jpg",
       "images": [
         "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600985/kicks_epower.jpg"
@@ -352,7 +352,7 @@
       "name": "Nissan X-Trail e-POWER e-4ORCE 2027",
       "km": "",
       "listPrice": "",
-      "price": "Desde $751,990",
+      "price": "Desde $750,900",
       "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600969/xtrail_electrica.jpg",
       "images": [
         "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600969/xtrail_electrica.jpg"
@@ -361,17 +361,15 @@
       "description": "Aceleración 100% eléctrica sin cables ni tiempos de carga: autonomía insuperable y confort premium. ¡Estrena tu X-Trail e-POWER con financiamiento a tu medida!",
       "descriptionSize": "1.1rem",
       "descriptionColor": "#333333",
-      "benefits": [
-        "Seguro gratis 1 año*"
-      ],
+      "benefits": [],
       "fichaTecnica": "",
       "legal": "* Consulta versiones Exclusive y Platinum.Aplica terminos y condiciones. Consulta con tu asesor de ventas",
       "accentColor": "#0284c7",
       "underlineStyle": "solid",
       "category": "electricos",
-      "promoMes": "",
-      "promoMesTag": "⚡ EL PODER DE LA INNOVACIÓN",
-      "promoMesIcon": "💳"
+      "promoMes": "48 MESES SIN INTERESES*",
+      "promoMesTag": "🔥 TASA PREFERENCIAL",
+      "promoMesIcon": "🔥"
     }
   ],
   "demos": [
