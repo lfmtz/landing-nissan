@@ -352,7 +352,7 @@
       "name": "Nissan X-Trail e-POWER e-4ORCE 2027",
       "km": "",
       "listPrice": "",
-      "price": "Desde $750,900",
+      "price": "Desde $751,990",
       "image": "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600969/xtrail_electrica.jpg",
       "images": [
         "https://res.cloudinary.com/x15obxmg/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto/v1789600969/xtrail_electrica.jpg"
@@ -367,7 +367,7 @@
       "accentColor": "#0284c7",
       "underlineStyle": "solid",
       "category": "electricos",
-      "promoMes": "48 MESES SIN INTERESES*",
+      "promoMes": "",
       "promoMesTag": "🔥 TASA PREFERENCIAL",
       "promoMesIcon": "🔥"
     }
